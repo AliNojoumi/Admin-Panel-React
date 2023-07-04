@@ -1,0 +1,13 @@
+.active-container {
+    width: 15rem;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+    color: whitesmoke;
+    transition: all 0.5s ease-out;
+}
+
+.no-active-container {
+    left: -100%;
+    transition: all 0.5s ease-out;
+}
