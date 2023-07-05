@@ -2,17 +2,11 @@
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: row;
 }
 
 .content-container {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    overflow-y: scroll;
-    padding: 2rem;
-    background-color: red;
+    flex-grow: 1;
+    background-color: deepskyblue;
+    transition: margin-left 0.3s ease;
+    padding: 1.5rem 2rem;
 }

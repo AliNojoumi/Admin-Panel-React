@@ -1,13 +1,128 @@
-.active-container {
-    width: 10rem;
+.side-bar-container {
+    width: 13rem;
     height: 100vh;
-    /*position: fixed;*/
-    background-color: black;
-    color: whitesmoke;
-    transition: all 0.5s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: sticky;
+    background-color: whitesmoke;
+    margin-left: -13rem;
+    transition: all 0.3s ease;
+    padding: 1.5rem 2rem;
 }
 
-.no-active-container {
-    left: -100%;
-    transition: all 0.5s ease-out;
+.active {
+    margin-left: 0;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn {
+    width: auto;
+    height: auto;
+    padding: 0.5rem;
+    position: absolute;
+    right: -1.75rem;
+    top: 1.25rem;
+    transition: all 0.3s ease;
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #202020;
+    font-size: 1rem;
+}
+
+.toggle-btn:hover {
+    background-color: #f15824;
+    color: whitesmoke;
+    border: 1px solid #f15824;
+    font-size: 1rem;
+}
+
+.active-toggle-btn {
+    rotate: 180deg;
+    transition: all 0.3s ease;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #f15824;
+    transition: all 0.2s ease;
+}
+
+.h1 {
+    font-size: 0.875rem;
+    color: #202020;
+    transition: all 0.2s ease;
+}
+
+.h1:hover {
+    color: #f15824;
+    transition: all 0.2s ease;
+}
+
+.nav {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    list-style: none;
+    /*background-color: red;*/
+}
+
+.nav-link-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /*background-color: blue;*/
+}
+
+.nav-link {
+    width: 100%;
+    height: auto;
+    padding: 0.5rem 1rem;
+    color: #202020;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
+}
+
+.active-nav-link,
+.nav-link:hover {
+    background-color: #f15824;
+    color: whitesmoke;
+    transition: all 0.2s ease;
+}
+
+.nav-link-icon {
+    font-size: 1.35em;
+}
+
+@media screen and (max-width: 768px) {
+    .side-bar-container {
+        position: absolute;
+    }
 }
