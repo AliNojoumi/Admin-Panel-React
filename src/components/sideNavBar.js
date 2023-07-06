@@ -1,15 +1,16 @@
 import style from "../styles/sideBar/sideBar.module.css";
 import React, {useState} from "react";
 import {Link, NavLink, isActive} from "react-router-dom";
+import {useStateContext} from "../context/contextProvider";
 import {
     TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbUserEdit, TbLogout
 } from "react-icons/tb";
 
 export default function SideNavBar(props) {
-    const [isOpen, setIsOpen] = useState(true);
+    const {activeMenu, setActiveMenu} = useStateContext();
 
     const toggleNavbar = () => {
-        setIsOpen(!isOpen);
+        setActiveMenu(!activeMenu);
     };
 
     // ---------- This variable is for className ----------
@@ -18,9 +19,9 @@ export default function SideNavBar(props) {
     };
 
     return (<section
-        className={isOpen ? `${style["side-bar-container"]} ${style["active"]}` : `${style["side-bar-container"]}`}>
+        className={activeMenu ? `${style["side-bar-container"]} ${style["active"]}` : `${style["side-bar-container"]}`}>
         <button onClick={toggleNavbar}
-                className={isOpen ? `${style["toggle-btn"]} ${style["active-toggle-btn"]}` : `${style["toggle-btn"]}`}>
+                className={activeMenu ? `${style["toggle-btn"]} ${style["active-toggle-btn"]}` : `${style["toggle-btn"]}`}>
             <TbChevronRight></TbChevronRight>
         </button>
         <NavLink to="/Dashboard" className={style["logo-container"]}>
