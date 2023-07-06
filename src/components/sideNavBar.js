@@ -1,5 +1,5 @@
 import style from "../styles/sideBar/sideBar.module.css";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Link, NavLink, isActive} from "react-router-dom";
 import {useStateContext} from "../context/contextProvider";
 import {
@@ -7,7 +7,22 @@ import {
 } from "react-icons/tb";
 
 export default function SideNavBar(props) {
-    const {activeMenu, setActiveMenu} = useStateContext();
+    const {activeMenu, setActiveMenu, screenSize, setScreenSize} = useStateContext();
+
+    useEffect(() => {
+        const handleResize = () => setScreenSize(window.innerWidth);
+        window.addEventListener("resize", handleResize);
+        handleResize();
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    useEffect(() => {
+        if (screenSize <= 768) {
+            setActiveMenu(false);
+        } else {
+            setActiveMenu(true);
+        }
+    }, [screenSize]);
 
     const toggleNavbar = () => {
         setActiveMenu(!activeMenu);
