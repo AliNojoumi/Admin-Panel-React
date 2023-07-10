@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import style from "../styles/dashboard.module.css";
+import PieChart from "../components/charts/pieChart";
 
 export default function Dashboard(props) {
   const shiftContent = true;
@@ -32,15 +33,23 @@ export default function Dashboard(props) {
   }, []);
 
   return (
-    <div className={shiftContent ? `${style["content-container"]} ${style["shift"]}` : `${style["content-container"]}`}>
-      <div className={style["dashboard-banner"]}>
-        <div className={style["time-box"]}>
-          {date.hourTime} : {date.minTime} : {date.secTime}
+    <>
+      <div className={shiftContent ? `${style["content-container"]} ${style["shift"]}` : `${style["content-container"]}`}>
+        <div className={style["dashboard-banner"]}>
+          <div className={style["time-box"]}>
+            {date.hourTime} : {date.minTime} : {date.secTime}
+          </div>
+          <div className={style["date-box"]}>
+            {date.yearTime} / {date.monTime} / {date.dayTime}
+          </div>
         </div>
-        <div className={style["date-box"]}>
-          {date.yearTime} / {date.monTime} / {date.dayTime}
+        <div className={style["dashboard-content"]}>
+          <div className={style["chart-conatiner"]}>
+            <PieChart></PieChart>
+          </div>
+          <div className={style["data-conatiner"]}>world</div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
