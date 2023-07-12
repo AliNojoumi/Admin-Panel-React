@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import style from "../styles/dashboard.module.css";
-import PieChart from "../components/charts/pieChart";
+import PieChart from "./charts/pieChart";
 
 export default function Dashboard(props) {
   const shiftContent = true;
@@ -47,7 +47,10 @@ export default function Dashboard(props) {
           <div className={style["chart-conatiner"]}>
             <PieChart></PieChart>
           </div>
-          <div className={style["data-conatiner"]}>world</div>
+          <div className={style["data-conatiner"]}>
+            <div className={style["swiper-container"]}>hello</div>
+            <div className={style["data-box"]}>hello</div>
+          </div>
         </div>
       </div>
     </>
