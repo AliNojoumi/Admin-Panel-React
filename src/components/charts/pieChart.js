@@ -9,9 +9,24 @@ export const data = {
   datasets: [
     {
       label: "# of Votes",
-      data: [12, 5, 12, 25],
-      backgroundColor: ["rgba(252, 53, 132, 0.2)", "rgba(241, 88, 36, 0.2)", "rgba(32, 32, 32, 0.2)", "rgba(138, 163, 232, 0.2)"],
-      borderColor: ["rgba(252, 53, 132, 1)", "rgba(241, 88, 36, 1)", "rgba(32, 32, 32, 1)", "rgba(138, 163, 232, 1)"],
+      data: [
+        Math.random(0, 100),
+        Math.random(0, 100),
+        Math.random(0, 100),
+        Math.random(0, 100),
+      ],
+      backgroundColor: [
+        "rgba(252, 53, 132, 0.2)",
+        "rgba(241, 88, 36, 0.2)",
+        "rgba(32, 32, 32, 0.2)",
+        "rgba(138, 163, 232, 0.2)",
+      ],
+      borderColor: [
+        "rgba(252, 53, 132, 1)",
+        "rgba(241, 88, 36, 1)",
+        "rgba(32, 32, 32, 1)",
+        "rgba(138, 163, 232, 1)",
+      ],
       borderWidth: 1,
     },
   ],
