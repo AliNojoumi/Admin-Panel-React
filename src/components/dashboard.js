@@ -1,13 +1,7 @@
 import { useState, useEffect } from "react";
 import style from "../styles/dashboard.module.css";
 import PieChart from "./charts/pieChart";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-
-import { Swiper, SwiperSlide } from "swiper/react";
-
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import SwipeSlide from "../components/UI/swipeSlide";
 
 export default function Dashboard(props) {
   const shiftContent = true;
@@ -56,24 +50,7 @@ export default function Dashboard(props) {
           </div>
           <div className={style["data-conatiner"]}>
             <div className={style["swiper-container"]}>
-              <Swiper
-                // install Swiper modules
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
-                loop={true}
-                draggable={true}
-                spaceBetween={50}
-                slidesPerView={2}
-                navigation
-                pagination={false}
-                direction="rtl"
-              >
-                <SwiperSlide>
-                  <p>hello world</p>
-                </SwiperSlide>
-                <SwiperSlide>
-                  <p>hello</p>
-                </SwiperSlide>
-              </Swiper>
+              <SwipeSlide></SwipeSlide>
             </div>
           </div>
         </div>
