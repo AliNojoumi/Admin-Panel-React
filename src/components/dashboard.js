@@ -8,9 +8,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
-import image1 from "../image/image1.webp";
-import image2 from "../image/image2.jpg";
 
 export default function Dashboard(props) {
   const shiftContent = true;
@@ -44,13 +41,7 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <div
-        className={
-          shiftContent
-            ? `${style["content-container"]} ${style["shift"]}`
-            : `${style["content-container"]}`
-        }
-      >
+      <div className={shiftContent ? `${style["content-container"]} ${style["shift"]}` : `${style["content-container"]}`}>
         <div className={style["dashboard-banner"]}>
           <div className={style["time-box"]}>
             {date.hourTime} : {date.minTime} : {date.secTime}
@@ -65,25 +56,22 @@ export default function Dashboard(props) {
           </div>
           <div className={style["data-conatiner"]}>
             <div className={style["swiper-container"]}>
-              {" "}
               <Swiper
                 // install Swiper modules
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
+                loop={true}
+                draggable={true}
                 spaceBetween={50}
-                slidesPerView={1}
+                slidesPerView={2}
                 navigation
-                pagination={{ clickable: true }}
-                scrollbar={{ draggable: true }}
-                onSwiper={(swiper) => console.log(swiper)}
-                onSlideChange={() => console.log("slide change")}
+                pagination={false}
+                direction="rtl"
               >
                 <SwiperSlide>
-                  {" "}
-                  <img src={image1} alt="image1" />
+                  <p>hello world</p>
                 </SwiperSlide>
                 <SwiperSlide>
-                  {" "}
-                  <img src={image2} alt="image1" />
+                  <p>hello</p>
                 </SwiperSlide>
               </Swiper>
             </div>
