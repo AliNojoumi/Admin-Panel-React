@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import style from "../styles/dashboard.module.css";
 import PieChart from "./charts/pieChart";
-import SwipeSlide from "../components/UI/swipeSlide";
+import TinyLineChart from "../components/charts/lineChart";
+import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
 
 export default function Dashboard(props) {
   const shiftContent = true;
@@ -49,8 +50,35 @@ export default function Dashboard(props) {
             <PieChart></PieChart>
           </div>
           <div className={style["data-conatiner"]}>
-            <div className={style["swiper-container"]}>
-              <SwipeSlide></SwipeSlide>
+            <div className={style["users-container"]}>
+              <div className={style["data-box"]}>
+                <TbUserCheck className={style["icon"]}></TbUserCheck>
+                <p className={style["p"]}>Users :</p>
+                <h1 className={style["h1"]}>2500</h1>
+              </div>
+              <div className={style["chart"]}>
+                <TinyLineChart></TinyLineChart>
+              </div>
+            </div>
+            <div className={style["cities-container"]}>
+              <div className={style["data-box"]}>
+                <TbMapPinCheck className={style["icon"]}></TbMapPinCheck>
+                <p className={style["p"]}>Cities :</p>
+                <h1 className={style["h1"]}>500</h1>
+              </div>
+              <div className={style["chart"]}>
+                <TinyLineChart></TinyLineChart>
+              </div>
+            </div>
+            <div className={style["messages-container"]}>
+              <div className={style["data-box"]}>
+                <TbMailCheck className={style["icon"]}></TbMailCheck>
+                <p className={style["p"]}>Messages :</p>
+                <h1 className={style["h1"]}>7500</h1>
+              </div>
+              <div className={style["chart"]}>
+                <TinyLineChart></TinyLineChart>
+              </div>
             </div>
           </div>
         </div>
