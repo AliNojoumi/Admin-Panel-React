@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import style from "../styles/dashboard.module.css";
-import PieChart from "./charts/pieChart";
+import PieeChart from "./charts/pieChart";
 import TinyLineChart from "../components/charts/lineChart";
 import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
 
@@ -47,7 +47,25 @@ export default function Dashboard(props) {
         </div>
         <div className={style["dashboard-content"]}>
           <div className={style["chart-conatiner"]}>
-            <PieChart></PieChart>
+            <PieeChart></PieeChart>
+            <div className={style["chart-description-box"]}>
+              <div className={style["icon-color-box"]}>
+                <div className={style["icon-color"]}></div>
+                <p className={style["icon-p"]}>Users</p>
+              </div>
+              <div className={style["icon-color-box"]}>
+                <div className={`${style["icon-color"]} ${style["messages-color"]}`}></div>
+                <p className={style["icon-p"]}>Messages</p>
+              </div>
+              <div className={style["icon-color-box"]}>
+                <div className={`${style["icon-color"]} ${style["cities-color"]}`}></div>
+                <p className={style["icon-p"]}>Cities</p>
+              </div>
+              <div className={style["icon-color-box"]}>
+                <div className={`${style["icon-color"]} ${style["ages-color"]}`}></div>
+                <p className={style["icon-p"]}>Ages</p>
+              </div>
+            </div>
           </div>
           <div className={style["data-conatiner"]}>
             <div className={style["users-container"]}>

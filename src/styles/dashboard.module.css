@@ -70,6 +70,53 @@
   align-items: center;
   padding: 1rem;
   border: 1px solid gray;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-description-box {
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.icon-color-box {
+  width: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-color {
+  width: 15px;
+  height: 15px;
+  background-color: #f15824;
+  border-radius: 50%;
+}
+
+.cities-color {
+  background-color: #202020;
+}
+
+.messages-color {
+  background-color: #808080;
+}
+
+.ages-color {
+  background-color: #00008b;
+}
+
+.icon-p {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #202020;
 }
 
 .data-conatiner {

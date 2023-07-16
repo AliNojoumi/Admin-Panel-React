@@ -1,39 +1,27 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
+import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+const min = 0;
+const max = 100;
 
-export const data = {
-  labels: ["Users", "Cities", "Messages", "Average Age"],
-  datasets: [
-    {
-      label: "# of Votes",
-      data: [
-        Math.random(0, 100),
-        Math.random(0, 100),
-        Math.random(0, 100),
-        Math.random(0, 100),
-      ],
-      backgroundColor: [
-        "rgba(252, 53, 132, 0.2)",
-        "rgba(241, 88, 36, 0.2)",
-        "rgba(32, 32, 32, 0.2)",
-        "rgba(138, 163, 232, 0.2)",
-      ],
-      borderColor: [
-        "rgba(252, 53, 132, 1)",
-        "rgba(241, 88, 36, 1)",
-        "rgba(32, 32, 32, 1)",
-        "rgba(138, 163, 232, 1)",
-      ],
-      borderWidth: 1,
-    },
-  ],
-};
+const data = [
+  { name: "Users", value: Math.floor(Math.random() * (max - min + 1)) + min, color: "#f15824" },
+  { name: "Cities", value: Math.floor(Math.random() * (max - min + 1)) + min, color: "#202020" },
+  { name: "Messages", value: Math.floor(Math.random() * (max - min + 1)) + min, color: "#808080" },
+  { name: "Ages", value: Math.floor(Math.random() * (max - min + 1)) + min, color: "#00008B" },
+];
 
-export function PieChart() {
-  return <Pie data={data} />;
+export default function PieeChart() {
+  return (
+    <ResponsiveContainer width={"100%"} height={"100%"}>
+      <PieChart>
+        <Tooltip contentStyle={{ background: "whitesmoke", borderRadius: "0.5rem" }} />
+        <Pie data={data} innerRadius={"80%"} outerRadius={"90%"} paddingAngle={5} dataKey="value">
+          {data.map((item) => (
+            <Cell key={item.name} fill={item.color} />
+          ))}
+        </Pie>
+      </PieChart>
+    </ResponsiveContainer>
+  );
 }
-
-export default PieChart;
