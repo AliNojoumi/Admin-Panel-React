@@ -1,0 +1,56 @@
+.error-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 5rem;
+}
+
+.h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #202020;
+  text-align: center;
+}
+
+.message-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.p {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #202020;
+  text-align: center;
+}
+
+.button {
+  width: auto;
+  height: auto;
+  outline: none;
+  background: none;
+  border: 1px solid #202020;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  color: whitesmoke;
+  background-color: #f15824;
+  border: 1px solid #f15824;
+  transition: all 0.2s ease;
+}
