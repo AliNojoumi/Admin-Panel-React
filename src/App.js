@@ -6,6 +6,7 @@ import Dashboard from "./components/dashboard";
 import AddUser from "./pages/addUser";
 import Error from "./pages/error";
 import Chart from "./pages/chart";
+import Users from "./pages/users";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" exact element={<Main />}>
             <Route path="/Dashboard" element={<Dashboard />}></Route>
+            <Route path="/Users" element={<Users />}></Route>
             <Route path="/AddUsers" element={<AddUser />}></Route>
             <Route path="/Charts" element={<Chart />}></Route>
           </Route>
