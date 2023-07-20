@@ -1,0 +1,61 @@
+.chart-container {
+  width: calc(100vw - 13rem);
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: rgb(255, 185, 185);
+}
+
+.charts-ul {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 7rem;
+  flex-wrap: wrap;
+  background-color: pink;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #202020;
+  font-size: 0.875rem;
+  font-weight: 400;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  color: whitesmoke;
+  background-color: #f15824;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.active-nav-link {
+  color: whitesmoke;
+  background-color: #f15824;
+  border-radius: 0.5rem;
+}
+
+.nav-link-icon {
+  width: 1.35em;
+  height: auto;
+}
+
+@media screen and (max-width: 1200px) {
+  .charts-ul {
+    gap: 1rem;
+  }
+}
