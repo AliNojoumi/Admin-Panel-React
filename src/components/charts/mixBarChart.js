@@ -1,5 +1,5 @@
 import React from "react";
-import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import style from "../../styles/chart.module.css";
 
 // ---------- These are dummy random data, We can use real data from the backend with get api and use them here ----------

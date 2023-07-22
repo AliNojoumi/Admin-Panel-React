@@ -96,6 +96,10 @@
   background-color: #808080;
 }
 
+.ages-color {
+  background-color: #00008b;
+}
+
 @media screen and (max-width: 1200px) {
   .charts-ul {
     gap: 1rem;
