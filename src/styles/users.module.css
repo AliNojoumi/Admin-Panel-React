@@ -2,10 +2,10 @@
   width: calc(100vw - 13rem);
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
   padding: 2rem;
-  background-color: rgb(166, 77, 255);
+  background-color: whitesmoke;
 }
