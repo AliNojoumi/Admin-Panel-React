@@ -1,5 +1,5 @@
 import React from "react";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import style from "../../styles/chart.module.css";
 
 // ---------- These are dummy random data, We can use real data from the backend with get api and use them here ----------
@@ -49,29 +49,29 @@ const data = [
   },
 ];
 
-export default function DashedLineChart() {
+export default function MixBarChart() {
   return (
     <>
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
+        <BarChart
           width={500}
-          height={400}
+          height={300}
           data={data}
           margin={{
-            top: 50,
+            top: 20,
             right: 30,
             left: 20,
-            bottom: 0,
+            bottom: 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Line type="monotone" dataKey="Usres" stroke="#f15824" strokeDasharray="5 5" />
-          <Line type="monotone" dataKey="Cities" stroke="#202020" strokeDasharray="3 4 5 2" />
-          <Line type="monotone" dataKey="Messages" stroke="#808080" strokeDasharray="3 4 5 2" />
-        </LineChart>
+          <Bar dataKey="Usres" stackId="a" fill="#f15824" />
+          <Bar dataKey="Cities" stackId="a" fill="#202020" />
+          <Bar dataKey="Messages" fill="#808080" />
+        </BarChart>
       </ResponsiveContainer>
       <div className={style["chart-description-box"]}>
         <div className={style["icon-color-box"]}>
