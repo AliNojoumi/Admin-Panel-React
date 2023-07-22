@@ -24,7 +24,7 @@ export default function AddUser(props) {
     console.log(userData);
     fetch("http://localhost:6630/api/v1/user", {
       method: "POST",
-      "Content-Type": "application/json",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
     })
       .then((Response) => Response.json())
