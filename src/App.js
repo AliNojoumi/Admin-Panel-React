@@ -7,6 +7,7 @@ import AddUser from "./pages/addUser";
 import Error from "./pages/error";
 import Chart from "./pages/chart";
 import Users from "./pages/users";
+import StakedChart from "./components/charts/stakedChart";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             <Route path="/Charts" element={<Chart />}>
               <Route path="/Charts/AreaChart" element={<p>hello world</p>}></Route>
               <Route path="/Charts/LineChart" element={<p>hello world2</p>}></Route>
-              <Route path="/Charts/StackedChart" element={<p>hello world3</p>}></Route>
+              <Route path="/Charts/StackedChart" element={<StakedChart />}></Route>
               <Route path="/Charts/MixBarChart" element={<p>hello world4</p>}></Route>
             </Route>
           </Route>

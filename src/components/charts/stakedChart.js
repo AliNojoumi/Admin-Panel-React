@@ -1,70 +1,92 @@
-import React, { PureComponent } from "react";
+import React from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import style from "../../styles/chart.module.css";
+
+// ---------- These are dummy random data, We can use real data from the backend with get api and use them here ----------
 
 const data = [
   {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400,
+    name: "Monday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210,
+    name: "Tuesday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290,
+    name: "Wednesday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000,
+    name: "Thursday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181,
+    name: "Friday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500,
+    name: "Saturday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
   {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100,
+    name: "Sunday",
+    Usres: Math.floor(Math.random() * 5000),
+    Cities: Math.floor(Math.random() * 10000),
+    Messages: Math.floor(Math.random() * 10000),
   },
 ];
 
 export default function StakedChart() {
   return (
-    <ResponsiveContainer width="100%" height="100%">
-      <AreaChart
-        width={500}
-        height={400}
-        data={data}
-        margin={{
-          top: 10,
-          right: 30,
-          left: 0,
-          bottom: 0,
-        }}
-      >
-        <Tooltip />
-        <Area type="monotone" dataKey="uv" stackId="1" stroke="#8884d8" fill="#8884d8" />
-        <Area type="monotone" dataKey="pv" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
-        <Area type="monotone" dataKey="amt" stackId="1" stroke="#ffc658" fill="#ffc658" />
-      </AreaChart>
-    </ResponsiveContainer>
+    <>
+      <ResponsiveContainer width="100%" height="100%">
+        <AreaChart
+          width={500}
+          height={400}
+          data={data}
+          margin={{
+            top: 50,
+            right: 30,
+            left: 0,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip wrapperStyle={{ backgroundColor: "#f4f4f4", borderRadius: 6, border: "1px solid #d5d5d5" }} />
+          <Area type="monotone" dataKey="Usres" stackId="1" stroke="#f15824" fill="#f15824" />
+          <Area type="monotone" dataKey="Cities" stackId="1" stroke="#202020" fill="#202020" />
+          <Area type="monotone" dataKey="Messages" stackId="1" stroke="#808080" fill="#808080" />
+        </AreaChart>
+      </ResponsiveContainer>
+      <div className={style["chart-description-box"]}>
+        <div className={style["icon-color-box"]}>
+          <div className={style["icon-color"]}></div>
+          <p className={style["icon-p"]}>Users</p>
+        </div>
+        <div className={style["icon-color-box"]}>
+          <div className={`${style["icon-color"]} ${style["messages-color"]}`}></div>
+          <p className={style["icon-p"]}>Messages</p>
+        </div>
+        <div className={style["icon-color-box"]}>
+          <div className={`${style["icon-color"]} ${style["cities-color"]}`}></div>
+          <p className={style["icon-p"]}>Cities</p>
+        </div>
+      </div>
+    </>
   );
 }
