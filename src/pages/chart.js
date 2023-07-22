@@ -14,7 +14,7 @@ export default function Chart() {
           <TbChartAreaLine className={style["nav-link-icon"]} />
           Area Chart
         </NavLink>
-        <NavLink to="/Charts/LineChart" className={activeClassName}>
+        <NavLink to="/Charts/DashedLineChart" className={activeClassName}>
           <TbChartLine className={style["nav-link-icon"]} />
           Line Chart
         </NavLink>

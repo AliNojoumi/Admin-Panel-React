@@ -8,6 +8,7 @@ import Error from "./pages/error";
 import Chart from "./pages/chart";
 import Users from "./pages/users";
 import StakedChart from "./components/charts/stakedChart";
+import DashedLineChart from "./components/charts/dashedLineChart";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
             <Route path="/AddUsers" element={<AddUser />}></Route>
             <Route path="/Charts" element={<Chart />}>
               <Route path="/Charts/AreaChart" element={<p>hello world</p>}></Route>
-              <Route path="/Charts/LineChart" element={<p>hello world2</p>}></Route>
+              <Route path="/Charts/DashedLineChart" element={<DashedLineChart></DashedLineChart>}></Route>
               <Route path="/Charts/StackedChart" element={<StakedChart />}></Route>
               <Route path="/Charts/MixBarChart" element={<p>hello world4</p>}></Route>
             </Route>
