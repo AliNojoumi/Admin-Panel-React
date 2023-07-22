@@ -22,7 +22,7 @@ function App() {
             <Route path="/Users" element={<Users />}></Route>
             <Route path="/AddUsers" element={<AddUser />}></Route>
             <Route path="/Charts" element={<Chart />}>
-              <Route path="/Charts/AreaChart" element={<BigPieChart />}></Route>
+              <Route path="/Charts/PieChart" element={<BigPieChart />}></Route>
               <Route path="/Charts/DashedLineChart" element={<DashedLineChart />}></Route>
               <Route path="/Charts/StackedChart" element={<StakedChart />}></Route>
               <Route path="/Charts/MixBarChart" element={<MixBarChart />}></Route>

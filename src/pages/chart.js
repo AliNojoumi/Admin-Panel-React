@@ -1,6 +1,6 @@
 import style from "../styles/chart.module.css";
 import { Outlet, NavLink, isActive } from "react-router-dom";
-import { TbChartAreaLine, TbChartBar, TbChartLine, TbChartSankey } from "react-icons/tb";
+import { TbChartDonut, TbChartBar, TbChartLine, TbChartSankey } from "react-icons/tb";
 
 export default function Chart() {
   const activeClassName = ({ isActive }) => {
@@ -10,9 +10,9 @@ export default function Chart() {
   return (
     <section className={style["chart-container"]}>
       <ul className={style["charts-ul"]}>
-        <NavLink to="/Charts/AreaChart" className={activeClassName}>
-          <TbChartAreaLine className={style["nav-link-icon"]} />
-          Area Chart
+        <NavLink to="/Charts/PieChart" className={activeClassName}>
+          <TbChartDonut className={style["nav-link-icon"]} />
+          Pie Chart
         </NavLink>
         <NavLink to="/Charts/DashedLineChart" className={activeClassName}>
           <TbChartLine className={style["nav-link-icon"]} />
