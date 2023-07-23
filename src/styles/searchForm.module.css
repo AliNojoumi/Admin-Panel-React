@@ -6,6 +6,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f15824;
 }
 
 .search-input {

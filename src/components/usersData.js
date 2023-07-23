@@ -16,7 +16,10 @@ export default function UsersData(props) {
         .then((response) => response.json())
         .then((result) => result.data)
         .then((data) => data.items)
-        .then((finalData) => fetchedDataHandler(finalData))
+        .then((finalData) => {
+          fetchedDataHandler(finalData);
+          loadingDataHandler(false);
+        })
         .catch((err) => console.log(err));
     } catch (err) {
       console.log(err);
