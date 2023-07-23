@@ -45,9 +45,10 @@ export default function UsersData(props) {
   return (
     <>
       {loadingData ? (
-        <p className={style["loading-p"]}>
-          Loading Data <TbLoader className={style["loading-icon"]} />
-        </p>
+        <div className={style["loading-list-container"]}>
+          <TbLoader className={style["loading-icon"]} />
+          <p className={style["loading-p"]}>Loading data...</p>
+        </div>
       ) : (
         <div className={style["ul-container"]}>
           {fetchedData.length !== 0 ? (

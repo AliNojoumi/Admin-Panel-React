@@ -66,25 +66,28 @@
   font-weight: 600;
 }
 
-.loading-p {
-  width: auto;
-  height: auto;
+.loading-list-container {
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  font-size: 0.875rem;
-  font-weight: 400;
-  color: #202020;
   margin-top: 1rem;
 }
 
 .loading-icon {
   width: 1.5rem;
   height: auto;
-  color: #202020;
+  color: #f15824;
   animation: spin 2s linear infinite;
+}
+
+.loading-p {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #202020;
 }
 
 .edit-icon,
