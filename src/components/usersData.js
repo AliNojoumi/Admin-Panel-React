@@ -54,7 +54,10 @@ export default function UsersData(props) {
                     Message : <span className={style["span"]}>{item.message}</span>
                   </p>
                 </div>
-                <div className={style["icon-container"]}>icons</div>
+                <div className={style["icon-container"]}>
+                  <TbEdit className={style["edit-icon"]} />
+                  <TbArchive className={style["delete-icon"]} />
+                </div>
               </li>
             );
           })}
