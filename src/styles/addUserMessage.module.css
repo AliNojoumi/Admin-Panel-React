@@ -41,6 +41,16 @@
   padding-bottom: 0.5rem;
 }
 
+.close-fail-btn-container {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ff0000;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-bottom: 0.5rem;
+}
+
 .close-icon {
   width: 1rem;
   height: auto;
@@ -62,16 +72,17 @@
   justify-content: space-between;
   align-items: center;
   gap: 1.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 
-.success-message {
+.message {
   width: auto;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
 }
 
 .success-icon {
@@ -80,13 +91,19 @@
   color: #41a317;
 }
 
-.success-p {
+.fail-icon {
+  width: 2rem;
+  height: auto;
+  color: #ff0000;
+}
+
+.p {
   font-size: 0.875rem;
   font-weight: 400;
   color: #202020;
 }
 
-.success-btn {
+.btn {
   width: auto;
   height: auto;
   padding: 0.5rem 2rem;
@@ -100,7 +117,7 @@
   cursor: pointer;
 }
 
-.success-btn:hover {
+.btn:hover {
   background-color: #f15824;
   color: whitesmoke;
   border: 1px solid #f15824;

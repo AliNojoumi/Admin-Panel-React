@@ -1,35 +1,35 @@
 import style from "../styles/addUserMessage.module.css";
-import { TbX, TbCircleCheckFilled } from "react-icons/tb";
+import { TbX, TbCircleXFilled } from "react-icons/tb";
 import { useStateContext } from "../context/contextProvider";
 
-export default function SuccessAddUser(props) {
-  const { successAddUserHandler } = useStateContext();
+export default function FailAddUser(props) {
+  const { failAddUserHandler } = useStateContext();
   return (
     <section className={style["portal-container"]}>
       <div
         className={style["portal-background"]}
         onClick={() => {
-          successAddUserHandler(false);
+          failAddUserHandler(false);
         }}
       >
         <div className={style["success-message-container"]}>
-          <div className={style["close-btn-container"]}>
+          <div className={style["close-fail-btn-container"]}>
             <TbX
               className={style["close-icon"]}
               onClick={() => {
-                successAddUserHandler(false);
+                failAddUserHandler(false);
               }}
             />
           </div>
           <div className={style["message-container"]}>
             <div className={style["message"]}>
-              <TbCircleCheckFilled className={style["success-icon"]} />
-              <p className={style["p"]}>The user was successfully submitted!</p>
+              <TbCircleXFilled className={style["fail-icon"]} />
+              <p className={style["p"]}>Oops! Something went wrong! please try again.</p>
             </div>
             <button
               className={style["btn"]}
               onClick={() => {
-                successAddUserHandler(false);
+                failAddUserHandler(false);
               }}
             >
               Ok

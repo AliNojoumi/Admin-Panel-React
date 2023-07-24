@@ -1,10 +1,11 @@
 import style from "../styles/addUser.module.css";
 import { useState, useRef, useEffect } from "react";
 import SuccessAddUser from "../components/successAddUser";
+import FailAddUser from "../components/failAddUser";
 import { useStateContext } from "../context/contextProvider";
 
 export default function AddUser(props) {
-  const { successAddUser, successAddUserHandler } = useStateContext();
+  const { successAddUser, successAddUserHandler, failAddUser, failAddUserHandler } = useStateContext();
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
 
   const onCahngeHandler = (e) => {
@@ -30,12 +31,17 @@ export default function AddUser(props) {
       .then((data) => {
         if (data) {
           successAddUserHandler(true);
+          failAddUserHandler(false);
           userDataHandler({ name: "", sureName: "", message: "", city: "", age: "" });
         } else {
           successAddUserHandler(false);
+          failAddUserHandler(true);
         }
         setTimeout(() => {
           successAddUserHandler(false);
+        }, 3000);
+        setTimeout(() => {
+          failAddUserHandler(false);
         }, 3000);
       })
       .catch((error) => {
@@ -45,7 +51,8 @@ export default function AddUser(props) {
 
   return (
     <section className={style["add-user-container"]}>
-      {!successAddUser && <SuccessAddUser></SuccessAddUser>}
+      {successAddUser && <SuccessAddUser />}
+      {!failAddUser && <FailAddUser />}
       <form onSubmit={addUserHandler} className={style["form"]}>
         <div className={style["input-container"]}>
           <label className={style["label"]}>Name :</label>
