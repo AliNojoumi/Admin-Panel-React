@@ -52,7 +52,7 @@ export default function AddUser(props) {
   return (
     <section className={style["add-user-container"]}>
       {successAddUser && <SuccessAddUser />}
-      {!failAddUser && <FailAddUser />}
+      {failAddUser && <FailAddUser />}
       <form onSubmit={addUserHandler} className={style["form"]}>
         <div className={style["input-container"]}>
           <label className={style["label"]}>Name :</label>
