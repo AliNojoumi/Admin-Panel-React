@@ -8,11 +8,12 @@
   flex-grow: 1;
   padding: 2rem;
   background-color: whitesmoke;
+  position: relative;
 }
 
 .form {
   width: auto;
-  height: 30rem;
+  height: auto;
 }
 
 .input-container {
@@ -82,28 +83,6 @@
   border: 1px solid #f15824;
   color: whitesmoke;
   transition: all 0.2s ease;
-}
-
-.submition-message {
-  width: 100%;
-  color: whitesmoke;
-  background-color: green;
-  font-size: 0.875rem;
-  font-weight: 400;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-}
-
-.error-message {
-  width: 100%;
-  color: whitesmoke;
-  background-color: red;
-  font-size: 0.875rem;
-  font-weight: 400;
-  margin-top: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
 }
 
 @media screen and (max-width: 1100px) {

@@ -1,15 +1,14 @@
 import style from "../styles/addUser.module.css";
 import { useState, useRef, useEffect } from "react";
+import SuccessAddUser from "../components/successAddUser";
+import { useStateContext } from "../context/contextProvider";
 
 export default function AddUser(props) {
+  const { successAddUser, successAddUserHandler } = useStateContext();
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
-  const [successMessage, successMessageHandler] = useState(false);
-  const [errorMessageShow, errorMessageShowHandler] = useState(false);
-  const [errorMessage, errorMessageHandler] = useState("");
 
   const onCahngeHandler = (e) => {
     userDataHandler({ ...userData, [e.target.name]: e.target.value });
-    successMessageHandler(false);
   };
 
   const refHanler = useRef();
@@ -27,22 +26,26 @@ export default function AddUser(props) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(userData),
     })
-      .then((Response) => Response.json())
+      .then((Response) => Response.ok)
       .then((data) => {
-        successMessageHandler(true);
-        userDataHandler({ name: "", sureName: "", message: "", city: "", age: "" });
+        if (data) {
+          successAddUserHandler(true);
+          userDataHandler({ name: "", sureName: "", message: "", city: "", age: "" });
+        } else {
+          successAddUserHandler(false);
+        }
         setTimeout(() => {
-          successMessageHandler(false);
-        }, 2000);
+          successAddUserHandler(false);
+        }, 3000);
       })
       .catch((error) => {
-        errorMessageHandler(error);
-        errorMessageShowHandler(true);
+        console.error(error);
       });
   };
 
   return (
     <section className={style["add-user-container"]}>
+      {!successAddUser && <SuccessAddUser></SuccessAddUser>}
       <form onSubmit={addUserHandler} className={style["form"]}>
         <div className={style["input-container"]}>
           <label className={style["label"]}>Name :</label>
@@ -67,8 +70,6 @@ export default function AddUser(props) {
         <button className={disabledBtn ? style["disabled-button"] : style["button"]} disabled={disabledBtn}>
           Add User
         </button>
-        {successMessage && <p className={style["submition-message"]}>Submition was successful!</p>}
-        {errorMessageShow && <p className={style["error-message"]}>Oops! Something is wrong! ${errorMessage}</p>}
       </form>
     </section>
   );
