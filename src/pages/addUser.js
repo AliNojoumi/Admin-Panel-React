@@ -24,23 +24,20 @@ export default function AddUser(props) {
     console.log(userData);
     fetch("http://localhost:6630/api/v1/user", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", accept: "*/*" },
       body: JSON.stringify(userData),
     })
-      .then((Response) => Response.ok)
-      .then((data) => {
-        if (data) {
+      .then((response) => {
+        if (response.status === 400) {
+          successAddUserHandler(false);
+          failAddUserHandler(true);
+        } else if (response.status === 200) {
           successAddUserHandler(true);
           failAddUserHandler(false);
           userDataHandler({ name: "", sureName: "", message: "", city: "", age: "" });
-        } else {
-          successAddUserHandler(false);
-          failAddUserHandler(true);
         }
         setTimeout(() => {
           successAddUserHandler(false);
-        }, 3000);
-        setTimeout(() => {
           failAddUserHandler(false);
         }, 3000);
       })

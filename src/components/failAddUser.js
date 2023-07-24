@@ -24,7 +24,7 @@ export default function FailAddUser(props) {
           <div className={style["message-container"]}>
             <div className={style["message"]}>
               <TbCircleXFilled className={style["fail-icon"]} />
-              <p className={style["p"]}>Oops! Something went wrong! please try again.</p>
+              <p className={style["p"]}>Oops! The name is repetitive.</p>
             </div>
             <button
               className={style["btn"]}
