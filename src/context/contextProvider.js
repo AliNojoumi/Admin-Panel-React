@@ -27,6 +27,12 @@ export const ContextProvider = ({ children }) => {
   //----------This is for showing the loading data while api is calling ----------
   const [loadingData, loadingDataHandler] = useState(false);
 
+  //----------This is for showing the message that user want to delete or not ----------
+  const [askingForDeleting, askingForDeletingHandler] = useState(false);
+
+  //----------This is for getting id of the item we wanna delete ----------
+  const [userItemId, userItemIdHandler] = useState(null);
+
   //----------This is for storing the data that we get from user input----------
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
 
@@ -55,6 +61,21 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  //----------This is for deleting data at the back-end with DELETE fetch api ----------
+  const deleteItemHandler = async (itemId) => {
+    try {
+      fetch(`http://localhost:6630/api/v1/user/${itemId}`, { method: "DELETE", headers: { accept: "*/*" } }).then((response) => {
+        if (response.status === 200) {
+          fetchedDataHandler((prevItems) => prevItems.filter((item) => item.id !== itemId));
+        } else {
+          throw new Error("Something went wrong while deleting the item");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -77,6 +98,11 @@ export const ContextProvider = ({ children }) => {
         fetchingDataApi,
         userData,
         userDataHandler,
+        askingForDeleting,
+        askingForDeletingHandler,
+        deleteItemHandler,
+        userItemId,
+        userItemIdHandler,
       }}
     >
       {children}

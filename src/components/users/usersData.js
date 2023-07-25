@@ -3,24 +3,9 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbLoader, TbEdit, TbArchive, TbAlertCircle } from "react-icons/tb";
 
 export default function UsersData(props) {
-  const { fetchedData, fetchedDataHandler, loadingData } = useStateContext();
-
-  //----------This is for deleting data at the back-end with DELETE fetch api ----------
-  const deleteItemHandler = (itemId) => {
-    try {
-      fetch(`http://localhost:6630/api/v1/user/${itemId}`, { method: "DELETE", headers: { accept: "*/*" } })
-        .then((response) => response.ok)
-        .then((result) => {
-          if (result) {
-            fetchedDataHandler((prevItems) => prevItems.filter((item) => item.id !== itemId));
-          } else {
-            throw new Error("Something went wrong while deleting the item");
-          }
-        });
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  //----------This is for adding the data from the context and updating them ----------
+  const { fetchedData, loadingData, askingForDeleting, askingForDeletingHandler, deleteItemHandler, userItemIdHandler } =
+    useStateContext();
 
   return (
     <>
@@ -55,7 +40,13 @@ export default function UsersData(props) {
                     </div>
                     <div className={style["icon-container"]}>
                       <TbEdit className={style["edit-icon"]} />
-                      <TbArchive className={style["delete-icon"]} onClick={() => deleteItemHandler(item.id)} />
+                      <TbArchive
+                        className={style["delete-icon"]}
+                        onClick={() => {
+                          askingForDeletingHandler(true);
+                          userItemIdHandler(item.id);
+                        }}
+                      />
                     </div>
                   </li>
                 );
