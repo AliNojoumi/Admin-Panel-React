@@ -1,11 +1,14 @@
-import style from "../styles/addUser.module.css";
+import style from "./addUser.module.css";
 import { useState, useRef, useEffect } from "react";
-import SuccessAddUser from "../components/successAddUser";
-import FailAddUser from "../components/failAddUser";
-import { useStateContext } from "../context/contextProvider";
+import SuccessAddUser from "../../components/fail&successAddUser/successAddUser";
+import FailAddUser from "../../components/fail&successAddUser/failAddUser";
+import { useStateContext } from "../../context/contextProvider";
 
 export default function AddUser(props) {
+  //----------This is for adding the data from the context and updating them ----------
   const { successAddUser, successAddUserHandler, failAddUser, failAddUserHandler } = useStateContext();
+
+  //----------This is for storing the data that we get from user input----------
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
 
   const onCahngeHandler = (e) => {
@@ -17,8 +20,10 @@ export default function AddUser(props) {
     refHanler.current.focus();
   }, []);
 
+  //----------This is for disabling submit button if the imputs are empty----------
   const disabledBtn = !userData.name || !userData.sureName || !userData.city || !userData.age || !userData.message;
 
+  //----------This is for posting data to the back-end with POST fetch api ----------
   const addUserHandler = (e) => {
     e.preventDefault();
     console.log(userData);

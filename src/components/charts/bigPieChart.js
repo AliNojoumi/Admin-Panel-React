@@ -1,6 +1,6 @@
+import style from "../../pages/chart/chart.module.css";
 import React from "react";
 import { PieChart, Pie, Tooltip, Cell, ResponsiveContainer } from "recharts";
-import style from "../../styles/chart.module.css";
 
 const min = 0;
 const max = 100;

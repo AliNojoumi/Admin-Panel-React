@@ -1,12 +1,13 @@
+import style from "../../pages/main/dashboard.module.css";
 import { useState, useEffect } from "react";
-import style from "../styles/dashboard.module.css";
-import PieeChart from "./charts/pieChart";
-import TinyLineChart from "../components/charts/lineChart";
+import PieeChart from "../charts/pieChart";
+import TinyLineChart from "../charts/lineChart";
 import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
 
 export default function Dashboard(props) {
   const shiftContent = true;
 
+  //----------This is for setting initial data for getting date ----------
   const [date, setDate] = useState({
     hourTime: 0,
     minTime: 0,

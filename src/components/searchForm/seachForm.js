@@ -1,5 +1,5 @@
+import style from "./searchForm.module.css";
 import { TbSearch } from "react-icons/tb";
-import style from "../styles/searchForm.module.css";
 
 export default function SearchForm(props) {
   return (

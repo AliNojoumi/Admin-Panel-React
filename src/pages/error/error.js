@@ -1,11 +1,11 @@
-import style from "../styles/error.module.css";
+import style from "./error.module.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Error(props) {
   const navigator = useNavigate();
 
   const navigateHandler = () => {
-    navigator("/Dashboard");
+    navigator(-1);
   };
 
   return (

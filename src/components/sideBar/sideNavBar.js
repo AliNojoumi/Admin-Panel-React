@@ -1,10 +1,11 @@
-import style from "../styles/sideBar/sideBar.module.css";
+import style from "./sideBar.module.css";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, isActive } from "react-router-dom";
-import { useStateContext } from "../context/contextProvider";
+import { useStateContext } from "../../context/contextProvider";
 import { TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbUserEdit, TbLogout } from "react-icons/tb";
 
 export default function SideNavBar(props) {
+  //----------This is for adding the data from the context and updating them----------
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } = useStateContext();
 
   useEffect(() => {

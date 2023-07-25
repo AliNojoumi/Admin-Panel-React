@@ -1,9 +1,11 @@
-import style from "../styles/addUserMessage.module.css";
+import style from "./addUserMessage.module.css";
+import { useStateContext } from "../../context/contextProvider";
 import { TbX, TbCircleXFilled } from "react-icons/tb";
-import { useStateContext } from "../context/contextProvider";
 
 export default function FailAddUser(props) {
+  //----------This is for adding the data from the context and updating them ----------
   const { failAddUserHandler } = useStateContext();
+
   return (
     <section className={style["portal-container"]}>
       <div
