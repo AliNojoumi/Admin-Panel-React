@@ -3,7 +3,15 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbSearch, TbPlus } from "react-icons/tb";
 
 export default function SearchForm(props) {
-  const { activeResetSearchInput, activeResetSearchInputHandler, formSearchInput, formSearchInputHandler } = useStateContext();
+  const {
+    activeResetSearchInput,
+    activeResetSearchInputHandler,
+    formSearchInput,
+    formSearchInputHandler,
+    fetchedData,
+    fetchedDataHandler,
+    fetchingDataApi,
+  } = useStateContext();
 
   const searchInputHanlder = (e) => {
     activeResetSearchInputHandler(false);
@@ -11,6 +19,7 @@ export default function SearchForm(props) {
     formSearchInputHandler(value);
     if (formSearchInput.length <= 1) {
       activeResetSearchInputHandler(false);
+      fetchingDataApi();
     } else {
       activeResetSearchInputHandler(true);
     }
@@ -20,10 +29,17 @@ export default function SearchForm(props) {
     e.preventDefault();
     formSearchInputHandler("");
     activeResetSearchInputHandler(false);
+    fetchingDataApi();
+  };
+
+  const searchHandler = async (e) => {
+    e.preventDefault();
+    const filteredData = fetchedData.filter((item) => item.name.includes(formSearchInput.toLowerCase()));
+    fetchedDataHandler(filteredData);
   };
 
   return (
-    <form className={style["form-container"]}>
+    <form className={style["form-container"]} onSubmit={searchHandler}>
       <input
         type="search"
         name="searchInput"

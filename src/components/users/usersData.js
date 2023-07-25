@@ -1,33 +1,9 @@
 import style from "./usersData.module.css";
-import { useEffect, useState } from "react";
+import { useStateContext } from "../../context/contextProvider";
 import { TbLoader, TbEdit, TbArchive, TbAlertCircle } from "react-icons/tb";
 
 export default function UsersData(props) {
-  //----------This is for fetching and storing data from the back-end in a variable ----------
-  const [fetchedData, fetchedDataHandler] = useState([]);
-  //----------This is for showing the loading data while api is calling ----------
-  const [loadingData, loadingDataHandler] = useState(false);
-
-  //----------This is for getting data from the back-end with GET fetch api ----------
-  useEffect(() => {
-    loadingDataHandler(true);
-    try {
-      fetch("http://localhost:6630/api/v1/user", {
-        method: "GET",
-        headers: { "Content-Type": "application/json", accept: "*/*", page: 1, pageSize: 10 },
-      })
-        .then((response) => response.json())
-        .then((result) => result.data)
-        .then((data) => data.items)
-        .then((finalData) => {
-          fetchedDataHandler(finalData);
-          loadingDataHandler(false);
-        })
-        .catch((err) => console.log(err));
-    } catch (err) {
-      console.log(err);
-    }
-  }, []);
+  const { fetchedData, fetchedDataHandler, loadingData } = useStateContext();
 
   //----------This is for deleting data at the back-end with DELETE fetch api ----------
   const deleteItemHandler = (itemId) => {

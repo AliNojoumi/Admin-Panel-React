@@ -1,15 +1,12 @@
 import style from "./addUser.module.css";
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import SuccessAddUser from "../../components/fail&successAddUser/successAddUser";
 import FailAddUser from "../../components/fail&successAddUser/failAddUser";
 import { useStateContext } from "../../context/contextProvider";
 
 export default function AddUser(props) {
   //----------This is for adding the data from the context and updating them ----------
-  const { successAddUser, successAddUserHandler, failAddUser, failAddUserHandler } = useStateContext();
-
-  //----------This is for storing the data that we get from user input----------
-  const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
+  const { successAddUser, successAddUserHandler, failAddUser, failAddUserHandler, userData, userDataHandler } = useStateContext();
 
   const onCahngeHandler = (e) => {
     userDataHandler({ ...userData, [e.target.name]: e.target.value });
