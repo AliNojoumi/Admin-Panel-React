@@ -15,6 +15,12 @@ export const ContextProvider = ({ children }) => {
   //----------This is for showing fail message in add user ----------
   const [failAddUser, failAddUserHandler] = useState(false);
 
+  //----------This is for active reset seach input button ----------
+  const [activeResetSearchInput, activeResetSearchInputHandler] = useState(false);
+
+  //----------This is for gettign data from the search input and storing it in a variable ----------
+  const [formSearchInput, formSearchInputHandler] = useState("");
+
   return (
     <StateContext.Provider
       value={{
@@ -26,6 +32,10 @@ export const ContextProvider = ({ children }) => {
         successAddUserHandler,
         failAddUser,
         failAddUserHandler,
+        activeResetSearchInput,
+        activeResetSearchInputHandler,
+        formSearchInput,
+        formSearchInputHandler,
       }}
     >
       {children}

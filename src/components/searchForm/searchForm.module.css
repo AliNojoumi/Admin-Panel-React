@@ -1,12 +1,12 @@
 .form-container {
   width: 100%;
   height: auto;
-  gap: 1rem;
+  gap: 0.5rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid #f15824;
 }
 
@@ -21,7 +21,8 @@
   color: #202020;
 }
 
-.search-button {
+.search-button,
+.close-button {
   width: auto;
   height: auto;
   padding: 0.5rem;
@@ -36,7 +37,12 @@
   transition: all 0.2s ease;
 }
 
-.search-button:hover {
+.close-icon {
+  rotate: 45deg;
+}
+
+.search-button:hover,
+.close-button:hover {
   background-color: #f15824;
   border: 1px solid #f15824;
   color: whitesmoke;
