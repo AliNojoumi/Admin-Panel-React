@@ -34,7 +34,13 @@ export default function SearchForm(props) {
 
   const searchHandler = async (e) => {
     e.preventDefault();
-    const filteredData = fetchedData.filter((item) => item.name.includes(formSearchInput.toLowerCase()));
+    const filteredData = fetchedData.filter(
+      (item) =>
+        item.name.includes(formSearchInput.toLowerCase()) ||
+        item.sureName.includes(formSearchInput.toLowerCase()) ||
+        item.message.includes(formSearchInput.toLowerCase()) ||
+        item.city.includes(formSearchInput.toLowerCase())
+    );
     fetchedDataHandler(filteredData);
   };
 
