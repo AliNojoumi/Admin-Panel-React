@@ -5,15 +5,21 @@ import { TbSearch, TbPlus } from "react-icons/tb";
 export default function SearchForm(props) {
   const { activeResetSearchInput, activeResetSearchInputHandler, formSearchInput, formSearchInputHandler } = useStateContext();
 
-  const searchInputHanlder = (event) => {
+  const searchInputHanlder = (e) => {
     activeResetSearchInputHandler(false);
-    const { value } = event.target;
+    const { value } = e.target;
     formSearchInputHandler(value);
     if (formSearchInput.length <= 1) {
       activeResetSearchInputHandler(false);
     } else {
       activeResetSearchInputHandler(true);
     }
+  };
+
+  const resetSeachInputHandler = (e) => {
+    e.preventDefault();
+    formSearchInputHandler("");
+    activeResetSearchInputHandler(false);
   };
 
   return (
@@ -30,7 +36,7 @@ export default function SearchForm(props) {
         <TbSearch />
       </button>
       {activeResetSearchInput && (
-        <button className={style["close-button"]}>
+        <button className={style["close-button"]} onClick={resetSeachInputHandler}>
           <TbPlus className={style["close-icon"]} />
         </button>
       )}
