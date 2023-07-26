@@ -30,8 +30,17 @@ export const ContextProvider = ({ children }) => {
   //----------This is for showing the message that user want to delete or not ----------
   const [askingForDeleting, askingForDeletingHandler] = useState(false);
 
+  //----------This is for showing the edit modal to user ----------
+  const [editModalState, editModalStateHandler] = useState(false);
+
+  //----------This is for getting the data from the backend with the api ----------
+  const [dataById, dataByIdHandler] = useState([]);
+
   //----------This is for getting id of the item we wanna delete ----------
   const [userItemId, userItemIdHandler] = useState(null);
+
+  //----------This is for getting data from the backend based the user id ----------
+  const [editUserItemId, editUserItemIdHandler] = useState(null);
 
   //----------This is for storing the data that we get from user input----------
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
@@ -54,6 +63,29 @@ export const ContextProvider = ({ children }) => {
         .then((finalData) => {
           fetchedDataHandler(finalData);
           loadingDataHandler(false);
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  //----------This is for getting data from the back-end with GET fetch api ----------
+  useEffect(() => {
+    fetchingDataById(userItemId);
+  }, []);
+
+  const fetchingDataById = async (userItemId) => {
+    try {
+      fetch(`http://localhost:6630/api/v1/user/${userItemId}`, {
+        method: "GET",
+        headers: { accept: "*/*" },
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result.data);
+          dataByIdHandler(result.data);
+          console.log(dataById);
         })
         .catch((err) => console.log(err));
     } catch (err) {
@@ -103,6 +135,11 @@ export const ContextProvider = ({ children }) => {
         deleteItemHandler,
         userItemId,
         userItemIdHandler,
+        editModalState,
+        editModalStateHandler,
+        fetchingDataById,
+        editUserItemId,
+        editUserItemIdHandler,
       }}
     >
       {children}

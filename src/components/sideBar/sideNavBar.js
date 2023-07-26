@@ -1,8 +1,8 @@
 import style from "./sideBar.module.css";
-import React, { useEffect, useState } from "react";
-import { Link, NavLink, isActive } from "react-router-dom";
+import React, { useEffect } from "react";
+import { NavLink, isActive } from "react-router-dom";
 import { useStateContext } from "../../context/contextProvider";
-import { TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbUserEdit, TbLogout } from "react-icons/tb";
+import { TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbLogout } from "react-icons/tb";
 
 export default function SideNavBar(props) {
   //----------This is for adding the data from the context and updating them----------
@@ -55,9 +55,9 @@ export default function SideNavBar(props) {
           <NavLink to="/AddUsers" className={activeClassName}>
             <TbUserPlus className={style["nav-link-icon"]}></TbUserPlus>Add User
           </NavLink>
-          <NavLink to="/EditUsers" className={activeClassName}>
+          {/* <NavLink to="/EditUsers/:id" className={activeClassName}>
             <TbUserEdit className={style["nav-link-icon"]}></TbUserEdit>Edit User
-          </NavLink>
+          </NavLink> */}
           <NavLink to="/Charts" className={activeClassName}>
             <TbChartPie2 className={style["nav-link-icon"]}></TbChartPie2>Charts
           </NavLink>

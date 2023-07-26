@@ -14,7 +14,12 @@ export default function AskForDelete(props) {
           askingForDeletingHandler(false);
         }}
       >
-        <div className={style["deleting-message-container"]}>
+        <div
+          className={style["deleting-message-container"]}
+          onClick={() => {
+            askingForDeletingHandler(true);
+          }}
+        >
           <div className={style["close-btn-container"]}>
             <TbX
               className={style["close-icon"]}

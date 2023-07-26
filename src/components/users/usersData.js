@@ -4,8 +4,15 @@ import { TbLoader, TbEdit, TbArchive, TbAlertCircle } from "react-icons/tb";
 
 export default function UsersData(props) {
   //----------This is for adding the data from the context and updating them ----------
-  const { fetchedData, loadingData, askingForDeleting, askingForDeletingHandler, deleteItemHandler, userItemIdHandler } =
-    useStateContext();
+  const {
+    fetchedData,
+    loadingData,
+    askingForDeletingHandler,
+    userItemIdHandler,
+    editModalStateHandler,
+    fetchingDataById,
+    editUserItemIdHandler,
+  } = useStateContext();
 
   return (
     <>
@@ -39,7 +46,14 @@ export default function UsersData(props) {
                       </p>
                     </div>
                     <div className={style["icon-container"]}>
-                      <TbEdit className={style["edit-icon"]} />
+                      <TbEdit
+                        className={style["edit-icon"]}
+                        onClick={() => {
+                          editModalStateHandler(true);
+                          editUserItemIdHandler(item.id);
+                          fetchingDataById(item.id);
+                        }}
+                      />
                       <TbArchive
                         className={style["delete-icon"]}
                         onClick={() => {

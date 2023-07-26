@@ -39,7 +39,7 @@
 }
 
 .close-icon {
-  rotate: 45deg;
+  transform: rotate(45deg);
 }
 
 .search-button:hover,
