@@ -1,5 +1,6 @@
 import style from "../../pages/chart/chart.module.css";
 import React from "react";
+import { Bar } from "react-chartjs-2";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 //---------- RANDOM data for charts ----------
@@ -66,7 +67,7 @@ export default function StakedChart() {
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
-          <Tooltip wrapperStyle={{ backgroundColor: "#f4f4f4", borderRadius: 6, border: "1px solid #d5d5d5" }} />
+          <Tooltip wrapperStyle={{ backgroundColor: "#f4f4f4", border: "1px solid #d5d5d5" }} />
           <Area type="monotone" dataKey="Usres" stackId="1" stroke="#f15824" fill="#f15824" />
           <Area type="monotone" dataKey="Cities" stackId="1" stroke="#202020" fill="#202020" />
           <Area type="monotone" dataKey="Messages" stackId="1" stroke="#808080" fill="#808080" />

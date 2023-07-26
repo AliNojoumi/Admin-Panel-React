@@ -53,8 +53,6 @@ export default function MixBarChart() {
     <>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart
-          width={500}
-          height={300}
           data={data}
           margin={{
             top: 20,
@@ -67,9 +65,9 @@ export default function MixBarChart() {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="Usres" stackId="a" fill="#f15824" />
-          <Bar dataKey="Cities" stackId="a" fill="#202020" />
-          <Bar dataKey="Messages" fill="#808080" />
+          <Bar dataKey="Usres" stackId="a" fill="#f15824" radius={[15, 15, 15, 15]} barSize={19} />
+          <Bar dataKey="Cities" stackId="a" fill="#202020" radius={[15, 15, 15, 15]} barSize={19} />
+          <Bar dataKey="Messages" fill="#808080" radius={[15, 15, 15, 15]} barSize={19} />
         </BarChart>
       </ResponsiveContainer>
       <div className={style["chart-description-box"]}>

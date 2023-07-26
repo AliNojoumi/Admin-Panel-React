@@ -18,8 +18,8 @@ export default function BigPieChart() {
     <>
       <ResponsiveContainer width={"100%"} height={"100%"}>
         <PieChart>
-          <Tooltip contentStyle={{ background: "whitesmoke", borderRadius: "0.5rem" }} />
-          <Pie data={data} innerRadius={"80%"} outerRadius={"90%"} paddingAngle={5} dataKey="value">
+          <Tooltip contentStyle={{ background: "whitesmoke" }} wrapperStyle={{background: "red"}}/>
+          <Pie data={data} innerRadius={"83%"} outerRadius={"90%"} paddingAngle={2} dataKey="value" cornerRadius={40}>
             {data.map((item) => (
               <Cell key={item.name} fill={item.color} />
             ))}
