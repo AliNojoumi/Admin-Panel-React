@@ -3,7 +3,7 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbX, TbCircleXFilled } from "react-icons/tb";
 
 export default function FailAddUser(props) {
-  //----------This is for adding the data from the context and updating them ----------
+  //---------- Global data from CONTEXT----------
   const { failAddUserHandler } = useStateContext();
 
   return (

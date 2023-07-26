@@ -7,7 +7,7 @@ import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
 export default function Dashboard(props) {
   const shiftContent = true;
 
-  //----------This is for setting initial data for getting date ----------
+  //---------- INITIAL date data for getting date ----------
   const [date, setDate] = useState({
     hourTime: 0,
     minTime: 0,

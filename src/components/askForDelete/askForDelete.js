@@ -3,23 +3,13 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbX, TbAlertCircle } from "react-icons/tb";
 
 export default function AskForDelete(props) {
-  //----------This is for adding the data from the context and updating them ----------
+  //---------- Global data from CONTEXT----------
   const { askingForDeletingHandler, deleteItemHandler, userItemId } = useStateContext();
 
   return (
     <section className={style["portal-container"]}>
-      <div
-        className={style["portal-background"]}
-        // onClick={() => {
-        //   askingForDeletingHandler(false);
-        // }}
-      >
-        <div
-          className={style["deleting-message-container"]}
-          // onClick={() => {
-          //   askingForDeletingHandler(true);
-          // }}
-        >
+      <div className={style["portal-background"]}>
+        <div className={style["deleting-message-container"]}>
           <div className={style["close-btn-container"]}>
             <TbX
               className={style["close-icon"]}

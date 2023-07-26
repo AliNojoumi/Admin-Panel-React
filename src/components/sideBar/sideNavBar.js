@@ -5,7 +5,7 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbLogout } from "react-icons/tb";
 
 export default function SideNavBar(props) {
-  //----------This is for adding the data from the context and updating them----------
+  //---------- Global data from CONTEXT----------
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } = useStateContext();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ export default function SideNavBar(props) {
     setActiveMenu(!activeMenu);
   };
 
-  // ---------- This variable is for className ----------
+  // ---------- Variable for className ----------
   const activeClassName = ({ isActive }) => {
     return isActive ? `${style["nav-link"]} ${style["active-nav-link"]}` : `${style["nav-link"]}`;
   };

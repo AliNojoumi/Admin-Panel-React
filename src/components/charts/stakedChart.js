@@ -2,8 +2,7 @@ import style from "../../pages/chart/chart.module.css";
 import React from "react";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
-// ---------- These are dummy random data, We can use real data from the backend with get api and use them here ----------
-
+//---------- RANDOM data for charts ----------
 const data = [
   {
     name: "Monday",

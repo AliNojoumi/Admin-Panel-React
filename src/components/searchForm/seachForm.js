@@ -3,6 +3,7 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbSearch, TbPlus } from "react-icons/tb";
 
 export default function SearchForm(props) {
+  //---------- Global data from CONTEXT----------
   const {
     activeResetSearchInput,
     activeResetSearchInputHandler,

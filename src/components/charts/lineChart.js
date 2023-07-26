@@ -4,7 +4,7 @@ import { LineChart, Line, Tooltip, ResponsiveContainer } from "recharts";
 const min = 0;
 const max = 100;
 
-//---------- Random Data Without Usin GET API ----------
+//---------- RANDOM data for charts ----------
 const data = [
   {
     name: "Page A",

@@ -4,7 +4,7 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbX } from "react-icons/tb";
 
 export default function EditModal() {
-  //----------This is for adding the data from the context and updating them ----------
+  //---------- Global data from CONTEXT----------
   const { editModalStateHandler, dataById, dataByIdHandler, updateUserDataById } = useStateContext();
   console.log(dataById);
 
@@ -13,10 +13,10 @@ export default function EditModal() {
       dataByIdHandler({
         id: dataById.id,
         name: e.target.value,
-        sureName: dataById.message,
-        age: dataById.age,
+        sureName: dataById.sureName,
         message: dataById.message,
         city: dataById.city,
+        age: dataById.age,
         active: dataById.active,
       });
     } else if (e.target.name === "sureName") {
@@ -24,9 +24,9 @@ export default function EditModal() {
         id: dataById.id,
         name: dataById.name,
         sureName: e.target.value,
-        age: dataById.age,
         message: dataById.message,
         city: dataById.city,
+        age: dataById.age,
         active: dataById.active,
       });
     } else if (e.target.name === "city") {
@@ -34,9 +34,9 @@ export default function EditModal() {
         id: dataById.id,
         name: dataById.name,
         sureName: dataById.sureName,
-        age: dataById.age,
         message: dataById.message,
         city: e.target.value,
+        age: dataById.age,
         active: dataById.active,
       });
     } else if (e.target.name === "message") {
@@ -44,9 +44,9 @@ export default function EditModal() {
         id: dataById.id,
         name: dataById.name,
         sureName: dataById.sureName,
-        age: dataById.age,
         message: e.target.value,
         city: dataById.city,
+        age: dataById.age,
         active: dataById.active,
       });
     } else if (e.target.name === "age") {
@@ -54,9 +54,9 @@ export default function EditModal() {
         id: dataById.id,
         name: dataById.name,
         sureName: dataById.sureName,
-        age: e.target.value,
         message: dataById.message,
         city: dataById.city,
+        age: e.target.value,
         active: dataById.active,
       });
     }

@@ -5,7 +5,7 @@ import FailAddUser from "../../components/fail&successAddUser/failAddUser";
 import { useStateContext } from "../../context/contextProvider";
 
 export default function AddUser(props) {
-  //----------This is for adding the data from the context and updating them ----------
+  //---------- Global data from CONTEXT----------
   const { successAddUser, successAddUserHandler, failAddUser, failAddUserHandler, userData, userDataHandler } = useStateContext();
 
   const onCahngeHandler = (e) => {
@@ -17,10 +17,10 @@ export default function AddUser(props) {
     refHanler.current.focus();
   }, []);
 
-  //----------This is for disabling submit button if the imputs are empty----------
+  //---------- Disable add user button if one input is empty ----------
   const disabledBtn = !userData.name || !userData.sureName || !userData.city || !userData.age || !userData.message;
 
-  //----------This is for posting data to the back-end with POST fetch api ----------
+  //---------- POST API for posting new users ----------
   const addUserHandler = (e) => {
     e.preventDefault();
     console.log(userData);

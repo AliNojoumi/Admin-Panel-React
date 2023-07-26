@@ -3,7 +3,7 @@ import { Outlet, NavLink, isActive } from "react-router-dom";
 import { TbChartDonut, TbChartBar, TbChartLine, TbChartSankey } from "react-icons/tb";
 
 export default function Chart() {
-  // ---------- This variable is for className ----------
+  // ---------- Variable for className ----------
   const activeClassName = ({ isActive }) => {
     return isActive ? `${style["nav-link"]} ${style["active-nav-link"]}` : `${style["nav-link"]}`;
   };

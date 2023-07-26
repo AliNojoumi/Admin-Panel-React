@@ -3,7 +3,7 @@ import { useStateContext } from "../../context/contextProvider";
 import { TbLoader, TbEdit, TbArchive, TbAlertCircle } from "react-icons/tb";
 
 export default function UsersData(props) {
-  //----------This is for adding the data from the context and updating them ----------
+  //---------- Global data from CONTEXT----------
   const {
     fetchedData,
     loadingData,

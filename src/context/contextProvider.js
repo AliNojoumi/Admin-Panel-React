@@ -45,7 +45,7 @@ export const ContextProvider = ({ children }) => {
   //----------This is for storing the data that we get from user input----------
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
 
-  //----------This is for getting data from the back-end with GET fetch api ----------
+  //---------- GET API for getting all of the users ----------
   useEffect(() => {
     loadingDataHandler(true);
     fetchingDataApi();
@@ -70,7 +70,7 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  //----------This is for getting data by id from the back-end with GET fetch api ----------
+  //---------- GET API for getting users by id ----------
   const fetchingDataById = async (editUserItemId) => {
     try {
       fetch(`http://localhost:6630/api/v1/user/${editUserItemId}`, {
@@ -87,7 +87,7 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  //----------This is for deleting data at the back-end with DELETE fetch api ----------
+  //---------- DELETE API for deleting user by id ----------
   const deleteItemHandler = async (itemId) => {
     try {
       fetch(`http://localhost:6630/api/v1/user/${itemId}`, { method: "DELETE", headers: { accept: "*/*" } }).then((response) => {
@@ -103,19 +103,20 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  //---------- This is for updating the data by id ----------
-  const updateUserDataById = async (editUserItemId) => {
+  //---------- PUT API for updating the user ----------
+  const updateUserDataById = async () => {
     try {
-      fetch(`http://localhost:6630/api/v1/user/${editUserItemId}`, {
-        method: "PATCH",
-        headers: { accept: "*/*" },
+      fetch("http://localhost:6630/api/v1/user", {
+        method: "PUT",
+        headers: { accept: "*/*", "Content-Type": "application/json" },
         body: JSON.stringify(dataById),
       }).then((response) => {
-        if (response.statusCode === 200) {
+        if (response.status === 200) {
           fetchingDataApi();
           editModalStateHandler(false);
+          dataByIdHandler([]);
         } else {
-          throw new Error("we have an error");
+          throw new Error(response.error);
         }
       });
     } catch (err) {
