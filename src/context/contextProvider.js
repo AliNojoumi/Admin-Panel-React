@@ -33,7 +33,7 @@ export const ContextProvider = ({ children }) => {
   //----------This is for showing the edit modal to user ----------
   const [editModalState, editModalStateHandler] = useState(false);
 
-  //----------This is for getting data from the backend based the user id ----------
+  //----------This is for getting id of the item we wanna edit ----------
   const [editUserItemId, editUserItemIdHandler] = useState(null);
 
   //----------This is for getting the data from the backend with the api based the user id ----------
@@ -103,6 +103,26 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
+  //---------- This is for updating the data by id ----------
+  const updateUserDataById = async (editUserItemId) => {
+    try {
+      fetch(`http://localhost:6630/api/v1/user/${editUserItemId}`, {
+        method: "PATCH",
+        headers: { accept: "*/*" },
+        body: JSON.stringify(dataById),
+      }).then((response) => {
+        if (response.statusCode === 200) {
+          fetchingDataApi();
+          editModalStateHandler(false);
+        } else {
+          throw new Error("we have an error");
+        }
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <StateContext.Provider
       value={{
@@ -137,6 +157,7 @@ export const ContextProvider = ({ children }) => {
         editUserItemIdHandler,
         dataByIdHandler,
         dataById,
+        updateUserDataById,
       }}
     >
       {children}
