@@ -5,7 +5,8 @@ import { TbX } from "react-icons/tb";
 
 export default function EditModal() {
   //----------This is for adding the data from the context and updating them ----------
-  const { editModalStateHandler } = useStateContext();
+  const { editModalStateHandler, dataById } = useStateContext();
+
   return (
     <section className={style["portal-container"]}>
       <div
@@ -29,23 +30,23 @@ export default function EditModal() {
                 <form className={style["form"]}>
                   <div className={style["input-container"]}>
                     <label className={style["label"]}>Name :</label>
-                    <input className={style["input"]} />
+                    <input className={style["input"]} defaultValue={dataById.name} />
                   </div>
                   <div className={style["input-container"]}>
                     <label className={style["label"]}>SureName :</label>
-                    <input className={style["input"]} />
+                    <input className={style["input"]} defaultValue={dataById.sureName} />
                   </div>
                   <div className={style["input-container"]}>
                     <label className={style["label"]}>City :</label>
-                    <input className={style["input"]} />
+                    <input className={style["input"]} defaultValue={dataById.city} />
                   </div>
                   <div className={style["input-container"]}>
                     <label className={style["label"]}>Age :</label>
-                    <input className={style["input"]} />
+                    <input className={style["input"]} defaultValue={dataById.age} />
                   </div>
                   <div className={style["input-container"]}>
                     <label className={style["label"]}>Message :</label>
-                    <input className={style["input"]} />
+                    <input className={style["input"]} defaultValue={dataById.message} />
                   </div>
                 </form>
               </section>

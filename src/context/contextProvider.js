@@ -33,14 +33,14 @@ export const ContextProvider = ({ children }) => {
   //----------This is for showing the edit modal to user ----------
   const [editModalState, editModalStateHandler] = useState(false);
 
+  //----------This is for getting data from the backend based the user id ----------
+  const [editUserItemId, editUserItemIdHandler] = useState(null);
+
   //----------This is for getting the data from the backend with the api ----------
   const [dataById, dataByIdHandler] = useState([]);
 
   //----------This is for getting id of the item we wanna delete ----------
   const [userItemId, userItemIdHandler] = useState(null);
-
-  //----------This is for getting data from the backend based the user id ----------
-  const [editUserItemId, editUserItemIdHandler] = useState(null);
 
   //----------This is for storing the data that we get from user input----------
   const [userData, userDataHandler] = useState({ name: "", sureName: "", message: "", city: "", age: "" });
@@ -70,14 +70,14 @@ export const ContextProvider = ({ children }) => {
     }
   };
 
-  //----------This is for getting data from the back-end with GET fetch api ----------
+  //----------This is for getting data by id from the back-end with GET fetch api ----------
   useEffect(() => {
-    fetchingDataById(userItemId);
+    fetchingDataById(editUserItemId);
   }, []);
 
-  const fetchingDataById = async (userItemId) => {
+  const fetchingDataById = async (editUserItemId) => {
     try {
-      fetch(`http://localhost:6630/api/v1/user/${userItemId}`, {
+      fetch(`http://localhost:6630/api/v1/user/${editUserItemId}`, {
         method: "GET",
         headers: { accept: "*/*" },
       })
@@ -140,6 +140,7 @@ export const ContextProvider = ({ children }) => {
         fetchingDataById,
         editUserItemId,
         editUserItemIdHandler,
+        dataById,
       }}
     >
       {children}

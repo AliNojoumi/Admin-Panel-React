@@ -49,9 +49,9 @@ export default function UsersData(props) {
                       <TbEdit
                         className={style["edit-icon"]}
                         onClick={() => {
-                          editModalStateHandler(true);
                           editUserItemIdHandler(item.id);
                           fetchingDataById(item.id);
+                          editModalStateHandler(true);
                         }}
                       />
                       <TbArchive
