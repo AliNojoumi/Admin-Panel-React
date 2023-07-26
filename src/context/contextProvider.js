@@ -36,7 +36,7 @@ export const ContextProvider = ({ children }) => {
   //----------This is for getting data from the backend based the user id ----------
   const [editUserItemId, editUserItemIdHandler] = useState(null);
 
-  //----------This is for getting the data from the backend with the api ----------
+  //----------This is for getting the data from the backend with the api based the user id ----------
   const [dataById, dataByIdHandler] = useState([]);
 
   //----------This is for getting id of the item we wanna delete ----------
@@ -71,10 +71,6 @@ export const ContextProvider = ({ children }) => {
   };
 
   //----------This is for getting data by id from the back-end with GET fetch api ----------
-  useEffect(() => {
-    fetchingDataById(editUserItemId);
-  }, []);
-
   const fetchingDataById = async (editUserItemId) => {
     try {
       fetch(`http://localhost:6630/api/v1/user/${editUserItemId}`, {
@@ -83,9 +79,7 @@ export const ContextProvider = ({ children }) => {
       })
         .then((response) => response.json())
         .then((result) => {
-          console.log(result.data);
           dataByIdHandler(result.data);
-          console.log(dataById);
         })
         .catch((err) => console.log(err));
     } catch (err) {
@@ -140,6 +134,7 @@ export const ContextProvider = ({ children }) => {
         fetchingDataById,
         editUserItemId,
         editUserItemIdHandler,
+        dataByIdHandler,
         dataById,
       }}
     >

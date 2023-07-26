@@ -5,13 +5,14 @@ import { TbX } from "react-icons/tb";
 
 export default function EditModal() {
   //----------This is for adding the data from the context and updating them ----------
-  const { editModalStateHandler, dataById } = useStateContext();
+  const { editModalStateHandler, dataById, dataByIdHandler } = useStateContext();
 
   return (
     <section className={style["portal-container"]}>
       <div
         className={style["portal-background"]}
         onClick={() => {
+          dataByIdHandler([]);
           editModalStateHandler(false);
         }}
       >
@@ -20,6 +21,7 @@ export default function EditModal() {
             <TbX
               className={style["close-icon"]}
               onClick={() => {
+                dataByIdHandler([]);
                 editModalStateHandler(false);
               }}
             />
@@ -56,6 +58,7 @@ export default function EditModal() {
               <button
                 className={style["button"]}
                 onClick={() => {
+                  dataByIdHandler([]);
                   editModalStateHandler(false);
                 }}
               >
