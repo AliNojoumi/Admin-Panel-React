@@ -8,12 +8,7 @@ export default function SuccessAddUser(props) {
 
   return (
     <section className={style["portal-container"]}>
-      <div
-        className={style["portal-background"]}
-        onClick={() => {
-          successAddUserHandler(false);
-        }}
-      >
+      <div className={style["portal-background"]}>
         <div className={style["success-message-container"]}>
           <div className={style["close-btn-container"]}>
             <TbX

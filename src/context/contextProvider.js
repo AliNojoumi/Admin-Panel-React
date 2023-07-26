@@ -93,6 +93,7 @@ export const ContextProvider = ({ children }) => {
       fetch(`http://localhost:6630/api/v1/user/${itemId}`, { method: "DELETE", headers: { accept: "*/*" } }).then((response) => {
         if (response.status === 200) {
           fetchedDataHandler((prevItems) => prevItems.filter((item) => item.id !== itemId));
+          askingForDeletingHandler(false);
         } else {
           throw new Error("Something went wrong while deleting the item");
         }

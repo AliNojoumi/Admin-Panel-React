@@ -10,15 +10,15 @@ export default function AskForDelete(props) {
     <section className={style["portal-container"]}>
       <div
         className={style["portal-background"]}
-        onClick={() => {
-          askingForDeletingHandler(false);
-        }}
+        // onClick={() => {
+        //   askingForDeletingHandler(false);
+        // }}
       >
         <div
           className={style["deleting-message-container"]}
-          onClick={() => {
-            askingForDeletingHandler(true);
-          }}
+          // onClick={() => {
+          //   askingForDeletingHandler(true);
+          // }}
         >
           <div className={style["close-btn-container"]}>
             <TbX

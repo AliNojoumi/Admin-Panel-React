@@ -9,13 +9,7 @@ export default function EditModal() {
 
   return (
     <section className={style["portal-container"]}>
-      <div
-        className={style["portal-background"]}
-        onClick={() => {
-          dataByIdHandler([]);
-          editModalStateHandler(false);
-        }}
-      >
+      <div className={style["portal-background"]}>
         <div className={style["editing-message-container"]}>
           <div className={style["close-btn-container"]}>
             <TbX
