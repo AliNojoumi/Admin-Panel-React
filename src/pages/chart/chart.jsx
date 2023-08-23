@@ -11,19 +11,19 @@ export default function Chart() {
   return (
     <section className={style["chart-container"]}>
       <ul className={style["charts-ul"]}>
-        <NavLink to="/Charts/PieChart" className={activeClassName}>
+        <NavLink to="/admin/Charts/PieChart" className={activeClassName}>
           <TbChartDonut className={style["nav-link-icon"]} />
           Pie Chart
         </NavLink>
-        <NavLink to="/Charts/DashedLineChart" className={activeClassName}>
+        <NavLink to="/admin/Charts/DashedLineChart" className={activeClassName}>
           <TbChartLine className={style["nav-link-icon"]} />
           Line Chart
         </NavLink>
-        <NavLink to="/Charts/StackedChart" className={activeClassName}>
+        <NavLink to="/admin/Charts/StackedChart" className={activeClassName}>
           <TbChartSankey className={style["nav-link-icon"]} />
           Stacked Chart
         </NavLink>
-        <NavLink to="/Charts/MixBarChart" className={activeClassName}>
+        <NavLink to="/admin/Charts/MixBarChart" className={activeClassName}>
           <TbChartBar className={style["nav-link-icon"]} />
           Mix Bar Chart
         </NavLink>

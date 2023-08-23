@@ -1,4 +1,4 @@
-import style from "../../pages/main/dashboard.module.css";
+import style from "./dashboard.module.css";
 import { useState, useEffect } from "react";
 import PieeChart from "../charts/pieChart";
 import TinyLineChart from "../charts/lineChart";

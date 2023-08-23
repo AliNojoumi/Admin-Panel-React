@@ -1,6 +1,5 @@
 import style from "../../pages/chart/chart.module.css";
 import React from "react";
-import { Bar } from "react-chartjs-2";
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 //---------- RANDOM data for charts ----------
