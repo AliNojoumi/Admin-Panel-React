@@ -162,8 +162,8 @@
 }
 
 .icon {
-  width: 2rem;
-  height: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
   color: #202020;
 }
 
@@ -174,7 +174,7 @@
 }
 
 .h1 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #f15824;
 }

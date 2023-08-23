@@ -1,7 +1,7 @@
 import style from "./dashboard.module.css";
 import { useState, useEffect } from "react";
-import PieeChart from "../charts/pieChart";
-import TinyLineChart from "../charts/lineChart";
+import PieeChart from "../../components/charts/pieChart";
+import TinyLineChart from "../../components/charts/lineChart";
 import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
 
 export default function Dashboard(props) {

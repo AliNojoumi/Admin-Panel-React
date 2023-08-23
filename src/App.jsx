@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import "./App.css";
-import style from "./components/dashboard/dashboard.module.css";
+import style from "./pages/dashboard/dashboard.module.css";
 import SideNavBar from "./components/sideBar/sideNavBar";
-import Dashboard from "./components/dashboard/dashboard";
+import Dashboard from "./pages/dashboard/dashboard";
 import AddUser from "./pages/addUser/addUser";
 import Error from "./pages/error/error";
 import Chart from "./pages/chart/chart";
