@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import PieeChart from "../../components/charts/pieChart";
 import TinyLineChart from "../../components/charts/lineChart";
 import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
+import { CountUp } from "use-count-up";
 
 export default function Dashboard(props) {
   const shiftContent = true;
@@ -73,7 +74,9 @@ export default function Dashboard(props) {
               <div className={style["data-box"]}>
                 <TbUserCheck className={style["icon"]}></TbUserCheck>
                 <p className={style["p"]}>Users :</p>
-                <h1 className={style["h1"]}>2500</h1>
+                <h1 className={style["h1"]}>
+                  <CountUp isCounting start={0} end={1320} easing={"easeOutCubic"} duration={1.5} />
+                </h1>
               </div>
               <div className={style["chart"]}>
                 <TinyLineChart></TinyLineChart>
@@ -83,7 +86,9 @@ export default function Dashboard(props) {
               <div className={style["data-box"]}>
                 <TbMapPinCheck className={style["icon"]}></TbMapPinCheck>
                 <p className={style["p"]}>Cities :</p>
-                <h1 className={style["h1"]}>500</h1>
+                <h1 className={style["h1"]}>
+                  <CountUp isCounting start={0} end={120} easing={"easeOutCubic"} duration={1.5} />
+                </h1>
               </div>
               <div className={style["chart"]}>
                 <TinyLineChart></TinyLineChart>
@@ -93,7 +98,9 @@ export default function Dashboard(props) {
               <div className={style["data-box"]}>
                 <TbMailCheck className={style["icon"]}></TbMailCheck>
                 <p className={style["p"]}>Messages :</p>
-                <h1 className={style["h1"]}>7500</h1>
+                <h1 className={style["h1"]}>
+                  <CountUp isCounting start={0} end={3610} easing={"easeOutCubic"} duration={1.5} />
+                </h1>
               </div>
               <div className={style["chart"]}>
                 <TinyLineChart></TinyLineChart>
