@@ -24,9 +24,9 @@ export default function Dashboard(props) {
         hourTime: timeDate.getHours().toString().padStart(2, "0"),
         minTime: timeDate.getMinutes().toString().padStart(2, "0"),
         secTime: timeDate.getSeconds().toString().padStart(2, "0"),
-        yearTime: timeDate.getFullYear().toString().padStart(2, "0"),
+        yearTime: timeDate.getFullYear().toString(),
         monTime: (timeDate.getMonth() + 1).toString().padStart(2, "0"),
-        dayTime: timeDate.getMonth().toString().padStart(2, "0"),
+        dayTime: timeDate.getDate().toString().padStart(2, "0"),
       });
     }, 1000);
 
