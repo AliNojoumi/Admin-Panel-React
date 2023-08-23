@@ -6,8 +6,6 @@ import { TbUserCheck, TbMailCheck, TbMapPinCheck } from "react-icons/tb";
 import { CountUp } from "use-count-up";
 
 export default function Dashboard(props) {
-  const shiftContent = true;
-
   //---------- INITIAL date data for getting date ----------
   const [date, setDate] = useState({
     hourTime: 0,
@@ -38,7 +36,7 @@ export default function Dashboard(props) {
 
   return (
     <>
-      <div className={shiftContent ? `${style["content-container"]} ${style["shift"]}` : `${style["content-container"]}`}>
+      <div className={style["content-container"]}>
         <div className={style["dashboard-banner"]}>
           <div className={style["time-box"]}>
             {date.hourTime} : {date.minTime} : {date.secTime}

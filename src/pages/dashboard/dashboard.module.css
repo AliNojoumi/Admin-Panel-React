@@ -10,7 +10,7 @@
   flex-grow: 1;
   background-color: whitesmoke;
   transition: margin-left 0.3s ease;
-  padding: 1.5rem 2rem;
+  padding: 1rem;
   overflow-y: scroll;
 }
 
@@ -45,7 +45,7 @@
 
 .dashboard-content {
   width: 100%;
-  height: calc(100vh - 16rem);
+  height: calc(100vh - 15rem);
   margin-top: 1rem;
   border-radius: 0.5rem;
   display: flex;
