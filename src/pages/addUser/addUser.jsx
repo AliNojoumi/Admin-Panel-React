@@ -23,7 +23,7 @@ export default function AddUser(props) {
   //---------- POST API for posting new users ----------
   const addUserHandler = (e) => {
     e.preventDefault();
-    console.log(userData);
+    // console.log(userData);
     fetch("http://localhost:6630/api/v1/user", {
       method: "POST",
       headers: { "Content-Type": "application/json", accept: "*/*" },

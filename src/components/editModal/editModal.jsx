@@ -6,7 +6,7 @@ import { TbX } from "react-icons/tb";
 export default function EditModal() {
   //---------- Global data from CONTEXT----------
   const { editModalStateHandler, dataById, dataByIdHandler, updateUserDataById } = useStateContext();
-  console.log(dataById);
+  // console.log(dataById);
 
   const handleInputs = (e) => {
     if (e.target.name === "name") {

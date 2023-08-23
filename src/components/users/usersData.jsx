@@ -1,6 +1,6 @@
 import style from "./usersData.module.css";
 import { useStateContext } from "../../context/contextProvider";
-import { TbLoader, TbEdit, TbArchive, TbAlertCircle } from "react-icons/tb";
+import { TbUser, TbLoader, TbEdit, TbArchive, TbAlertCircle } from "react-icons/tb";
 
 export default function UsersData(props) {
   //---------- Global data from CONTEXT----------
@@ -23,6 +23,10 @@ export default function UsersData(props) {
         </div>
       ) : (
         <div className={style["ul-container"]}>
+          <p className={style["p"]}>
+            <TbUser className={style["icon-p"]} />
+            Users List :
+          </p>
           {fetchedData.length !== 0 ? (
             <ul className={style["ul"]}>
               {fetchedData.map((item) => {

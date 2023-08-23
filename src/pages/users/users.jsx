@@ -8,6 +8,7 @@ import { useStateContext } from "../../context/contextProvider";
 export default function Users(props) {
   //---------- Global data from CONTEXT----------
   const { askingForDeleting, editModalState } = useStateContext();
+
   return (
     <section className={style["users-container"]}>
       {editModalState && <EditModal />}
