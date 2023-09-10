@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import "./App.css";
-import style from "./pages/dashboard/dashboard.module.css";
-import SideNavBar from "./components/sideBar/sideNavBar";
+import Layout from "./pages/layOut/layOut";
 import Dashboard from "./pages/dashboard/dashboard";
 import AddUser from "./pages/addUser/addUser";
 import Error from "./pages/error/error";
@@ -17,23 +16,22 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <section className={style["dashboard-container"]}>
-          <SideNavBar></SideNavBar>
-          <Routes>
-            <Route path="/" element={<Navigate to={"/admin/Dashboard"}></Navigate>}></Route>
-            <Route path="/admin" element={<Navigate to={"/admin/Dashboard"}></Navigate>}></Route>
-            <Route path="/admin/Dashboard" element={<Dashboard />}></Route>
-            <Route path="/admin/Users" element={<Users />}></Route>
-            <Route path="/admin/AddUsers" element={<AddUser />}></Route>
-            <Route path="/admin/Charts" element={<Chart />}>
-              <Route path="/admin/Charts/PieChart" element={<BigPieChart />}></Route>
-              <Route path="/admin/Charts/DashedLineChart" element={<DashedLineChart />}></Route>
-              <Route path="/admin/Charts/StackedChart" element={<StakedChart />}></Route>
-              <Route path="/admin/Charts/MixBarChart" element={<MixBarChart />}></Route>
+        <Routes>
+          <Route path="/" element={<Navigate to={"/admin/Dashboard"} />}></Route>
+          <Route path="/Admin" element={<Layout />}>
+            <Route path="Dashboard" element={<Dashboard />}></Route>
+            <Route path="Users" element={<Users />}></Route>
+            <Route path="AddUsers" element={<AddUser />}></Route>
+            <Route path="Charts" element={<Chart />}>
+              <Route path="PieChart" element={<BigPieChart />}></Route>
+              <Route path="DashedLineChart" element={<DashedLineChart />}></Route>
+              <Route path="StackedChart" element={<StakedChart />}></Route>
+              <Route path="MixBarChart" element={<MixBarChart />}></Route>
             </Route>
             <Route path="*" element={<Error></Error>}></Route>
-          </Routes>
-        </section>
+          </Route>
+          <Route path="/LogIn" element={<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, autem!</h1>} />
+        </Routes>
       </BrowserRouter>
     </>
   );

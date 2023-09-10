@@ -40,26 +40,26 @@ export default function SideNavBar(props) {
       >
         <TbChevronRight></TbChevronRight>
       </button>
-      <NavLink to="/admin/Dashboard" className={style["logo-container"]}>
+      <NavLink to="/Admin/Dashboard" className={style["logo-container"]}>
         <TbChartTreemap className={style["logo"]}></TbChartTreemap>
         <h1 className={style["h1"]}>Test Dashboard</h1>
       </NavLink>
       <nav className={style["nav"]}>
         <div className={style["nav-link-container"]}>
-          <NavLink to="/admin/Dashboard" className={activeClassName}>
+          <NavLink to="/Admin/Dashboard" className={activeClassName}>
             <TbApps className={style["nav-link-icon"]}></TbApps>Dashboard
           </NavLink>
-          <NavLink to="/admin/Users" className={activeClassName}>
+          <NavLink to="/Admin/Users" className={activeClassName}>
             <TbUser className={style["nav-link-icon"]}></TbUser>Users
           </NavLink>
-          <NavLink to="/admin/AddUsers" className={activeClassName}>
+          <NavLink to="/Admin/AddUsers" className={activeClassName}>
             <TbUserPlus className={style["nav-link-icon"]}></TbUserPlus>Add User
           </NavLink>
-          <NavLink to="/admin/Charts" className={activeClassName}>
+          <NavLink to="/Admin/Charts" className={activeClassName}>
             <TbChartPie2 className={style["nav-link-icon"]}></TbChartPie2>Charts
           </NavLink>
         </div>
-        <Link to="/logIn" className={style["nav-link"]}>
+        <Link to="/LogIn" className={style["nav-link"]}>
           <TbLogout className={style["nav-link-icon"]}></TbLogout>Log Out
         </Link>
       </nav>
