@@ -1,6 +1,6 @@
 import style from "./sideBar.module.css";
 import React, { useEffect } from "react";
-import { NavLink, isActive } from "react-router-dom";
+import { NavLink, Link, isActive } from "react-router-dom";
 import { useStateContext } from "../../context/contextProvider";
 import { TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbLogout } from "react-icons/tb";
 
@@ -55,16 +55,13 @@ export default function SideNavBar(props) {
           <NavLink to="/admin/AddUsers" className={activeClassName}>
             <TbUserPlus className={style["nav-link-icon"]}></TbUserPlus>Add User
           </NavLink>
-          {/* <NavLink to="/EditUsers/:id" className={activeClassName}>
-            <TbUserEdit className={style["nav-link-icon"]}></TbUserEdit>Edit User
-          </NavLink> */}
           <NavLink to="/admin/Charts" className={activeClassName}>
             <TbChartPie2 className={style["nav-link-icon"]}></TbChartPie2>Charts
           </NavLink>
         </div>
-        <NavLink to="/log" className={activeClassName}>
-          <TbLogout className={style["nav-link-icon"]}></TbLogout>Log
-        </NavLink>
+        <Link to="/logIn" className={style["nav-link"]}>
+          <TbLogout className={style["nav-link-icon"]}></TbLogout>Log Out
+        </Link>
       </nav>
     </section>
   );
