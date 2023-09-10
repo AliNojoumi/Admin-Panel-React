@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  position: sticky;
+  position: relative;
   background-color: whitesmoke;
   margin-left: -13rem;
   transition: all 0.3s ease;
@@ -46,7 +46,7 @@
 }
 
 .active-toggle-btn {
-  rotate: 180deg;
+  transform: rotate(180deg);
   transition: all 0.3s ease;
 }
 
