@@ -18,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={"/admin/Dashboard"} />}></Route>
+          <Route path="/Admin" element={<Navigate to="/Admin/Dashboard" />} />
           <Route path="/Admin" element={<Layout />}>
             <Route path="Dashboard" element={<Dashboard />}></Route>
             <Route path="Users" element={<Users />}></Route>
