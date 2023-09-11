@@ -1,7 +1,7 @@
 .log-in-container {
   width: 100vw;
   height: 100vh;
-  background-color: rebeccapurple;
+  background-color: whitesmoke;
   padding: 1rem;
   position: relative;
 }
@@ -28,13 +28,14 @@
   transform: translate(-50%, -50%);
   position: absolute;
   background-color: whitesmoke;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
   border-radius: 0.5rem;
 }
 
 .h1 {
   font-size: 1rem;
   font-weight: normal;
-  color: gray;
+  color: #202020;
 }
 
 .input-container {
@@ -53,7 +54,7 @@
 
 .label {
   font-size: 0.875rem;
-  color: #202020;
+  color: gray;
 }
 
 .input {
