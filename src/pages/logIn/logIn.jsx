@@ -1,9 +1,12 @@
 import React from "react";
+import { toast } from "react-toastify";
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import LogInBannerImage from "../../image/dashboard-banner-background-image.jpg";
 import style from "./logIn.module.css";
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const ref = useRef();
   const [logInInputData, logInInputDataHandler] = useState({ phone: "", password: "" });
 
@@ -25,10 +28,12 @@ const LogIn = () => {
       });
       const result = await response.json();
       console.log(result);
-      console.log(result.message);
-      console.log(result.data.accessToken);
+      toast.success(`${result.message} login!`, {
+        style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" },
+      });
+      navigate("/Admin/Dashboard");
     } catch (error) {
-      console.error(error);
+      toast.error(error, { style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" } });
     }
   }
 
