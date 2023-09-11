@@ -11,6 +11,7 @@ import StakedChart from "./components/charts/stakedChart";
 import DashedLineChart from "./components/charts/dashedLineChart";
 import MixBarChart from "./components/charts/mixBarChart";
 import BigPieChart from "./components/charts/bigPieChart";
+import LogIn from "./pages/logIn/logIn";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
             </Route>
             <Route path="*" element={<Error></Error>}></Route>
           </Route>
-          <Route path="/LogIn" element={<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, autem!</h1>} />
+          <Route path="/LogIn" element={<LogIn />} />
         </Routes>
       </BrowserRouter>
     </>
