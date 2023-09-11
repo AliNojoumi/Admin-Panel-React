@@ -1,8 +1,13 @@
 import React from "react";
+import { useEffect, useState, useRef } from "react";
 import LogInBannerImage from "../../image/dashboard-banner-background-image.jpg";
 import style from "./logIn.module.css";
 
 const LogIn = () => {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current.focus();
+  }, []);
   return (
     <section className={style["log-in-container"]}>
       <img src={LogInBannerImage} alt="log_In_Page_Image" className={style["background-image"]} />
@@ -11,7 +16,7 @@ const LogIn = () => {
         <div className={style["input-container"]}>
           <div className={style["input-box"]}>
             <label className={style["label"]}>Number :</label>
-            <input type="number" name="number" className={style["input"]} />
+            <input ref={ref} type="number" name="number" className={style["input"]} />
           </div>
           <div className={style["input-box"]}>
             <label className={style["label"]}>Password :</label>
