@@ -2,10 +2,13 @@ import style from "./sideBar.module.css";
 import React, { useEffect } from "react";
 import { NavLink, Link, isActive } from "react-router-dom";
 import { useStateContext } from "../../context/contextProvider";
+import { useAuthContext } from "../../context/authContext";
 import { TbChartTreemap, TbApps, TbUser, TbChartPie2, TbChevronRight, TbUserPlus, TbLogout } from "react-icons/tb";
+import { toast } from "react-toastify";
 
 export default function SideNavBar(props) {
   //---------- Global data from CONTEXT----------
+  const { dispath } = useAuthContext();
   const { activeMenu, setActiveMenu, screenSize, setScreenSize } = useStateContext();
 
   useEffect(() => {
@@ -59,7 +62,16 @@ export default function SideNavBar(props) {
             <TbChartPie2 className={style["nav-link-icon"]}></TbChartPie2>Charts
           </NavLink>
         </div>
-        <Link to="/LogIn" className={style["nav-link"]}>
+        <Link
+          to="/LogIn"
+          onClick={() => {
+            dispath({ type: "LOG-OUT" });
+            toast.success("Logged out successfully!", {
+              style: { backgroundColor: "#f4f4f4", color: "#202020", fontSize: "0.875rem" },
+            });
+          }}
+          className={style["nav-link"]}
+        >
           <TbLogout className={style["nav-link-icon"]}></TbLogout>Log Out
         </Link>
       </nav>

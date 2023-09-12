@@ -1,13 +1,13 @@
 import React from "react";
 import { toast } from "react-toastify";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import LogInBannerImage from "../../image/dashboard-banner-background-image.jpg";
 import style from "./logIn.module.css";
 
 const LogIn = () => {
-  const { logInInputData, logInInputDataHandler } = useAuthContext();
+  const { logInInputData, logInInputDataHandler, dispath } = useAuthContext();
   const navigate = useNavigate();
   const ref = useRef();
 
@@ -28,11 +28,12 @@ const LogIn = () => {
         body: JSON.stringify(logInInputData),
       });
       const result = await response.json();
-      console.log("the JWT token :" + result.data.accessToken);
+      dispath({ type: "LOG-IN", payload: result.data.accessToken });
       toast.success(`${result.message} login!`, {
         style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" },
       });
       navigate("/Admin/Dashboard");
+      logInInputDataHandler({ phone: "", password: "" });
     } catch (error) {
       toast.error(error, { style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" } });
     }
