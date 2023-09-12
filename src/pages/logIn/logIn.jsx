@@ -2,13 +2,14 @@ import React from "react";
 import { toast } from "react-toastify";
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuthContext } from "../../context/authContext";
 import LogInBannerImage from "../../image/dashboard-banner-background-image.jpg";
 import style from "./logIn.module.css";
 
 const LogIn = () => {
+  const { logInInputData, logInInputDataHandler } = useAuthContext();
   const navigate = useNavigate();
   const ref = useRef();
-  const [logInInputData, logInInputDataHandler] = useState({ phone: "", password: "" });
 
   useEffect(() => {
     ref.current.focus();
@@ -27,7 +28,7 @@ const LogIn = () => {
         body: JSON.stringify(logInInputData),
       });
       const result = await response.json();
-      console.log(result);
+      console.log("the JWT token :" + result.data.accessToken);
       toast.success(`${result.message} login!`, {
         style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" },
       });
