@@ -61,7 +61,8 @@ const LogIn = () => {
           navigate("/Admin/Dashboard");
           logInInputDataHandler({ phone: "", password: "" });
         } else {
-          toast.error(response.status);
+          toast.error(`Error ${response.status}, ${response.statusText}`);
+          loggingInStateDispatch({ type: "IS-LOGGED-IN" });
         }
       } catch (error) {
         console.log(`Oops! Something went wrong. The error was: ${error}`);
