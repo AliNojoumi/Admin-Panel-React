@@ -1,6 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import LogInBannerImage from "../../image/dashboard-banner-background-image.jpg";
@@ -8,6 +8,7 @@ import style from "./logIn.module.css";
 
 const LogIn = () => {
   const { logInInputData, logInInputDataHandler, dispath } = useAuthContext();
+  const [inputErrorState, inputErrorStateHandler] = useState(false);
   const navigate = useNavigate();
   const ref = useRef();
 
@@ -21,21 +22,33 @@ const LogIn = () => {
 
   async function logInFormSubmit(event) {
     event.preventDefault();
-    try {
-      const response = await fetch("http://localhost:6630/api/v1/login", {
-        method: "POST",
-        headers: { accept: "*/*", "Content-Type": "application/json" },
-        body: JSON.stringify(logInInputData),
-      });
-      const result = await response.json();
-      dispath({ type: "LOG-IN", payload: result.data.accessToken });
-      toast.success(`${result.message} login!`, {
-        style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" },
-      });
-      navigate("/Admin/Dashboard");
-      logInInputDataHandler({ phone: "", password: "" });
-    } catch (error) {
-      toast.error(error, { style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" } });
+    if (logInInputData.phone.trim().length === 0 || logInInputData.password.trim().length === 0) {
+      inputErrorStateHandler(true);
+      setTimeout(() => {
+        inputErrorStateHandler(false);
+      }, 3000);
+      return;
+    } else {
+      try {
+        const response = await fetch("http://localhost:6630/api/v1/login", {
+          method: "POST",
+          headers: { accept: "*/*", "Content-Type": "application/json" },
+          body: JSON.stringify(logInInputData),
+        });
+        if (response.status === 200) {
+          const result = await response.json();
+          dispath({ type: "LOG-IN", payload: result.data.accessToken });
+          toast.success(`${result.message} login!`, {
+            style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" },
+          });
+          navigate("/Admin/Dashboard");
+          logInInputDataHandler({ phone: "", password: "" });
+        } else {
+          toast.error(response.status);
+        }
+      } catch (error) {
+        console.log(`Oops! Something went wrong. The error was: ${error}`);
+      }
     }
   }
 
@@ -46,23 +59,27 @@ const LogIn = () => {
         <h1 className={style["h1"]}>Login</h1>
         <div className={style["input-container"]}>
           <div className={style["input-box"]}>
-            <label className={style["label"]}>Number :</label>
+            <label className={style["label"]}>
+              Number :{inputErrorState && <p className={style["error-p"]}>* please enter number!</p>}
+            </label>
             <input
               ref={ref}
               type="number"
               name="phone"
               value={logInInputData.phone}
-              className={style["input"]}
+              className={inputErrorState ? style["red-border-input"] : style["input"]}
               onChange={LogInInputHandler}
             />
           </div>
           <div className={style["input-box"]}>
-            <label className={style["label"]}>Password :</label>
+            <label className={style["label"]}>
+              Password :{inputErrorState && <p className={style["error-p"]}>* please enter password!</p>}
+            </label>
             <input
               type="password"
               name="password"
               value={logInInputData.password}
-              className={style["input"]}
+              className={inputErrorState ? style["red-border-input"] : style["input"]}
               onChange={LogInInputHandler}
             />
           </div>
