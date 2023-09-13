@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
 import { ToastContainer } from "react-toastify";
+import { useAuthContext } from "./context/authContext";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Layout from "./pages/layOut/layOut";
@@ -16,13 +17,26 @@ import BigPieChart from "./components/charts/bigPieChart";
 import LogIn from "./pages/logIn/logIn";
 
 function App() {
+  const { userLogInState } = useAuthContext();
+
+  function AuthProtectedRoutes({ children }) {
+    return userLogInState.user === null ? <Navigate to={"/LogIn"}></Navigate> : children;
+  }
+
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigate to={"/admin/Dashboard"} />}></Route>
           <Route path="/Admin" element={<Navigate to="/Admin/Dashboard" />} />
-          <Route path="/Admin" element={<Layout />}>
+          <Route
+            path="/Admin"
+            element={
+              <AuthProtectedRoutes>
+                <Layout />
+              </AuthProtectedRoutes>
+            }
+          >
             <Route path="Dashboard" element={<Dashboard />}></Route>
             <Route path="Users" element={<Users />}></Route>
             <Route path="AddUsers" element={<AddUser />}></Route>
