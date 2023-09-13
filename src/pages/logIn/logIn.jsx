@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useReducer } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
@@ -12,6 +12,20 @@ const LogIn = () => {
   const [passwordViewState, passwordViewStateHandler] = useState(false);
   const navigate = useNavigate();
   const ref = useRef();
+
+  const [loggingInState, loggingInStateDispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "IS-LOGGING-IN":
+          return { ...state, connecting: true };
+        case "IS-LOGGED-IN":
+          return { ...state, connecting: false };
+        default:
+          return state;
+      }
+    },
+    { connecting: false }
+  );
 
   useEffect(() => {
     ref.current.focus();
@@ -31,6 +45,7 @@ const LogIn = () => {
       return;
     } else {
       try {
+        loggingInStateDispatch({ type: "IS-LOGGING-IN" });
         const response = await fetch("http://localhost:6630/api/v1/login", {
           method: "POST",
           headers: { accept: "*/*", "Content-Type": "application/json" },
@@ -42,6 +57,7 @@ const LogIn = () => {
           toast.success(`${result.message} login!`, {
             style: { backgroundColor: "#f4f4f4", fontSize: "0.875rem", color: "#202020" },
           });
+          loggingInStateDispatch({ type: "IS-LOGGED-IN" });
           navigate("/Admin/Dashboard");
           logInInputDataHandler({ phone: "", password: "" });
         } else {
@@ -95,7 +111,7 @@ const LogIn = () => {
             </div>
           </div>
         </div>
-        <button className={style["button"]}>Login!</button>
+        <button className={style["button"]}>{!loggingInState.connecting ? "Login!" : "Is Logging In!"}</button>
       </form>
     </section>
   );
