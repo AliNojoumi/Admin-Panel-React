@@ -87,6 +87,9 @@ const LogIn = () => {
               value={logInInputData.phone}
               className={inputErrorState ? style["red-border-input"] : style["input"]}
               onChange={LogInInputHandler}
+              onFocus={() => {
+                inputErrorStateHandler(false);
+              }}
             />
           </div>
           <div className={style["input-box"]}>
@@ -100,6 +103,9 @@ const LogIn = () => {
                 value={logInInputData.password}
                 className={style["password-input"]}
                 onChange={LogInInputHandler}
+                onFocus={() => {
+                  inputErrorStateHandler(false);
+                }}
               />
               <span
                 className={style["eye-icon"]}
