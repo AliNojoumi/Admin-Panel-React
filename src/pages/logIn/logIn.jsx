@@ -1,14 +1,15 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { toast } from "react-toastify";
-import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "../../context/authContext";
 import LogInBannerImage from "../../image/dashboard-banner-background-image.jpg";
+import { TbEye, TbEyeClosed } from "react-icons/tb";
 import style from "./logIn.module.css";
 
 const LogIn = () => {
   const { logInInputData, logInInputDataHandler, dispath } = useAuthContext();
   const [inputErrorState, inputErrorStateHandler] = useState(false);
+  const [passwordViewState, passwordViewStateHandler] = useState(false);
   const navigate = useNavigate();
   const ref = useRef();
 
@@ -75,13 +76,23 @@ const LogIn = () => {
             <label className={style["label"]}>
               Password :{inputErrorState && <p className={style["error-p"]}>* please enter password!</p>}
             </label>
-            <input
-              type="password"
-              name="password"
-              value={logInInputData.password}
-              className={inputErrorState ? style["red-border-input"] : style["input"]}
-              onChange={LogInInputHandler}
-            />
+            <div className={inputErrorState ? style["red-password-input-div"] : style["password-input-div"]}>
+              <input
+                type={passwordViewState ? "text" : "password"}
+                name="password"
+                value={logInInputData.password}
+                className={style["password-input"]}
+                onChange={LogInInputHandler}
+              />
+              <span
+                className={style["eye-icon"]}
+                onClick={() => {
+                  passwordViewStateHandler(!passwordViewState);
+                }}
+              >
+                {passwordViewState ? <TbEye /> : <TbEyeClosed />}
+              </span>
+            </div>
           </div>
         </div>
         <button className={style["button"]}>Login!</button>
