@@ -46,6 +46,8 @@
   padding: 0.5rem 0rem 0.5rem 0.875rem;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .item-container {
@@ -54,7 +56,6 @@
   display: grid;
   grid-template-rows: repeat(3, auto);
   grid-template-columns: repeat(2, auto);
-  gap: 0.5rem;
 }
 
 .icon-container {
@@ -76,10 +77,6 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-}
-
-.item-message {
-  grid-column: 2/4;
 }
 
 .span {

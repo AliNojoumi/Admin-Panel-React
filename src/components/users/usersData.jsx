@@ -45,7 +45,7 @@ export default function UsersData(props) {
                       <p className={style["item-p"]}>
                         City : <span className={style["span"]}>{item.city}</span>
                       </p>
-                      <p className={`${style["item-p"]} ${style["item-message"]}`}>
+                      <p className={style["item-p"]}>
                         Message : <span className={style["span"]}>{item.message}</span>
                       </p>
                     </div>
