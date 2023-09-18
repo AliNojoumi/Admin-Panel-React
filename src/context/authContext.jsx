@@ -3,14 +3,6 @@ import React, { createContext, useContext, useState, useReducer } from "react";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  // let storedUserJWT;
-  // try {
-  //   storedUserJWT = JSON.parse(localStorage.getItem("user"));
-  // } catch (error) {
-  //   storedUserJWT = null;
-  // }
-
-  // const userJWTInitialState = { user: storedUserJWT || null };
 
   const [logInInputData, logInInputDataHandler] = useState({ phone: "", password: "" });
 
