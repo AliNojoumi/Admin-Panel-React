@@ -1,8 +1,10 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { useAuthContext } from "./authContext";
 
 const StateContext = createContext();
 
 export const ContextProvider = ({ children }) => {
+  const { userLogInState } = useAuthContext();
   //----------This is for active side menu ----------
   const [activeMenu, setActiveMenu] = useState(true);
 
@@ -51,22 +53,45 @@ export const ContextProvider = ({ children }) => {
     fetchingDataApi();
   }, [userData]);
 
+  // const fetchingDataApi = async () => {
+  //   try {
+  //     fetch("http://localhost:6630/api/v1/user", {
+  //       method: "GET",
+  //       headers: { accept: "*/*", page: 1, pageSize: 10, Authorization: userLogInState },
+  //     })
+  //       .then((response) => response.json())
+  //       .then((result) => result.data)
+  //       .then((data) => data.items)
+  //       .then((finalData) => {
+  //         fetchedDataHandler(finalData);
+  //         loadingDataHandler(false);
+  //       })
+  //       .catch((err) => console.log(err));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
   const fetchingDataApi = async () => {
     try {
-      fetch("http://localhost:6630/api/v1/user", {
+      const response = await fetch("http://localhost:6630/api/v1/user", {
         method: "GET",
-        headers: { "Content-Type": "application/json", accept: "*/*", page: 1, pageSize: 10 },
-      })
-        .then((response) => response.json())
-        .then((result) => result.data)
-        .then((data) => data.items)
-        .then((finalData) => {
-          fetchedDataHandler(finalData);
-          loadingDataHandler(false);
-        })
-        .catch((err) => console.log(err));
-    } catch (err) {
-      console.log(err);
+        headers: {
+          accept: "*/*",
+          Authorization: `Bearer ${userLogInState.userJWT}`,
+          page: 1,
+          pageSize: 10,
+        },
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const result = await response.json();
+      const finalData = result.data.items;
+      fetchedDataHandler(finalData);
+      loadingDataHandler(false);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -75,7 +100,7 @@ export const ContextProvider = ({ children }) => {
     try {
       fetch(`http://localhost:6630/api/v1/user/${editUserItemId}`, {
         method: "GET",
-        headers: { accept: "*/*" },
+        headers: { accept: "*/*", Authorization: `Bearer ${userLogInState.userJWT}` },
       })
         .then((response) => response.json())
         .then((result) => {
@@ -90,7 +115,10 @@ export const ContextProvider = ({ children }) => {
   //---------- DELETE API for deleting user by id ----------
   const deleteItemHandler = async (itemId) => {
     try {
-      fetch(`http://localhost:6630/api/v1/user/${itemId}`, { method: "DELETE", headers: { accept: "*/*" } }).then((response) => {
+      fetch(`http://localhost:6630/api/v1/user/${itemId}`, {
+        method: "DELETE",
+        headers: { accept: "*/*", Authorization: `Bearer ${userLogInState.userJWT}` },
+      }).then((response) => {
         if (response.status === 200) {
           fetchedDataHandler((prevItems) => prevItems.filter((item) => item.id !== itemId));
           askingForDeletingHandler(false);
@@ -108,7 +136,7 @@ export const ContextProvider = ({ children }) => {
     try {
       fetch("http://localhost:6630/api/v1/user", {
         method: "PUT",
-        headers: { accept: "*/*", "Content-Type": "application/json" },
+        headers: { accept: "*/*", "Content-Type": "application/json", Authorization: `Bearer ${userLogInState.userJWT}` },
         body: JSON.stringify(dataById),
       }).then((response) => {
         if (response.status === 200) {

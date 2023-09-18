@@ -3,8 +3,10 @@ import { useRef, useEffect } from "react";
 import SuccessAddUser from "../../components/fail&successAddUser/successAddUser";
 import FailAddUser from "../../components/fail&successAddUser/failAddUser";
 import { useStateContext } from "../../context/contextProvider";
+import { useAuthContext } from "../../context/authContext";
 
 export default function AddUser(props) {
+  const { userLogInState } = useAuthContext();
   //---------- Global data from CONTEXT----------
   const { successAddUser, successAddUserHandler, failAddUser, failAddUserHandler, userData, userDataHandler } = useStateContext();
 
@@ -26,7 +28,7 @@ export default function AddUser(props) {
     // console.log(userData);
     fetch("http://localhost:6630/api/v1/user", {
       method: "POST",
-      headers: { "Content-Type": "application/json", accept: "*/*" },
+      headers: { "Content-Type": "application/json", accept: "*/*", Authorization: `Bearer ${userLogInState.userJWT}` },
       body: JSON.stringify(userData),
     })
       .then((response) => {

@@ -20,14 +20,14 @@ function App() {
   const { userLogInState } = useAuthContext();
 
   function AuthProtectedRoutes({ children }) {
-    return userLogInState.user === null ? <Navigate to={"/LogIn"}></Navigate> : children;
+    return userLogInState.userJWT === null ? <Navigate to={"/LogIn"}></Navigate> : children;
   }
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to={"/admin/Dashboard"} />}></Route>
+          <Route path="/" element={<Navigate to={"/Admin/Dashboard"} />}></Route>
           <Route path="/Admin" element={<Navigate to="/Admin/Dashboard" />} />
           <Route
             path="/Admin"
