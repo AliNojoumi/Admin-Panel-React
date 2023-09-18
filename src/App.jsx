@@ -41,6 +41,7 @@ function App() {
             <Route path="Users" element={<Users />}></Route>
             <Route path="AddUsers" element={<AddUser />}></Route>
             <Route path="Charts" element={<Chart />}>
+              <Route index element={<Navigate to={"/Admin/Charts/PieChart"}></Navigate>}></Route>
               <Route path="PieChart" element={<BigPieChart />}></Route>
               <Route path="DashedLineChart" element={<DashedLineChart />}></Route>
               <Route path="StackedChart" element={<StakedChart />}></Route>
