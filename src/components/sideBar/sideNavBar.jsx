@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 export default function SideNavBar(props) {
   //---------- Global data from CONTEXT----------
   const { dispath } = useAuthContext();
-  const { activeMenu, setActiveMenu, screenSize, setScreenSize } = useStateContext();
+  const { activeMenu, setActiveMenu, screenSize, setScreenSize, fetchingDataApi } = useStateContext();
 
   useEffect(() => {
     const handleResize = () => setScreenSize(window.innerWidth);
@@ -52,7 +52,7 @@ export default function SideNavBar(props) {
           <NavLink to="/Admin/Dashboard" className={activeClassName}>
             <TbApps className={style["nav-link-icon"]}></TbApps>Dashboard
           </NavLink>
-          <NavLink to="/Admin/Users" className={activeClassName}>
+          <NavLink to="/Admin/Users" className={activeClassName} onClick={fetchingDataApi}>
             <TbUser className={style["nav-link-icon"]}></TbUser>Users
           </NavLink>
           <NavLink to="/Admin/AddUsers" className={activeClassName}>

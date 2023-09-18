@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { useAuthContext } from "./authContext";
+import { toast } from "react-toastify";
 
 const StateContext = createContext();
 
@@ -50,27 +51,8 @@ export const ContextProvider = ({ children }) => {
   //---------- GET API for getting all of the users ----------
   useEffect(() => {
     loadingDataHandler(true);
-    fetchingDataApi();
+    // fetchingDataApi();
   }, [userData]);
-
-  // const fetchingDataApi = async () => {
-  //   try {
-  //     fetch("http://localhost:6630/api/v1/user", {
-  //       method: "GET",
-  //       headers: { accept: "*/*", page: 1, pageSize: 10, Authorization: userLogInState },
-  //     })
-  //       .then((response) => response.json())
-  //       .then((result) => result.data)
-  //       .then((data) => data.items)
-  //       .then((finalData) => {
-  //         fetchedDataHandler(finalData);
-  //         loadingDataHandler(false);
-  //       })
-  //       .catch((err) => console.log(err));
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
 
   const fetchingDataApi = async () => {
     try {
@@ -120,6 +102,9 @@ export const ContextProvider = ({ children }) => {
         headers: { accept: "*/*", Authorization: `Bearer ${userLogInState.userJWT}` },
       }).then((response) => {
         if (response.status === 200) {
+          toast.success("The user was successfully deleted!", {
+            style: { backgroundColor: "whiteSmoke", color: "#202020", fontSize: "0.875rem" },
+          });
           fetchedDataHandler((prevItems) => prevItems.filter((item) => item.id !== itemId));
           askingForDeletingHandler(false);
         } else {
@@ -140,6 +125,9 @@ export const ContextProvider = ({ children }) => {
         body: JSON.stringify(dataById),
       }).then((response) => {
         if (response.status === 200) {
+          toast.success("The user was successfully editted!", {
+            style: { backgroundColor: "whiteSmoke", color: "#202020", fontSize: "0.875rem" },
+          });
           fetchingDataApi();
           editModalStateHandler(false);
           dataByIdHandler([]);

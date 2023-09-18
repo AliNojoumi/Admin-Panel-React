@@ -4,6 +4,7 @@ import SuccessAddUser from "../../components/fail&successAddUser/successAddUser"
 import FailAddUser from "../../components/fail&successAddUser/failAddUser";
 import { useStateContext } from "../../context/contextProvider";
 import { useAuthContext } from "../../context/authContext";
+import { toast } from "react-toastify";
 
 export default function AddUser(props) {
   const { userLogInState } = useAuthContext();
@@ -36,7 +37,10 @@ export default function AddUser(props) {
           successAddUserHandler(false);
           failAddUserHandler(true);
         } else if (response.status === 200) {
-          successAddUserHandler(true);
+          // successAddUserHandler(true);
+          toast.success("The user was successfully submitted!", {
+            style: { backgroundColor: "whiteSmoke", color: "#202020", fontSize: "0.875rem" },
+          });
           failAddUserHandler(false);
           userDataHandler({ name: "", sureName: "", message: "", city: "", age: "" });
         }
